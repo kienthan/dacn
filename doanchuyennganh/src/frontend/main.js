@@ -7,7 +7,6 @@ import Footer from "./footer"
 export default function Main(){
     return(
         <div>
-           <Header />
            <Banner />
            <Content />
            <Footer />

@@ -5,13 +5,14 @@ import {
     Route,
     Link
   } from "react-router-dom";
-import Content from "./footer";
-import SPThuongNgay from "./spthuongngay";
+import Main from "./frontend/main";
+import SPThuongNgay from "./frontend/spthuongngay";
 
 export default function Header(){
     return(
         <Router>
         <div>
+            
           <div >
            <div className="text-center">
                <img src="./img/logo.jpg" alt="logo quần áo" width="200" />
@@ -72,14 +73,15 @@ export default function Header(){
                 </nav>
         </div>
           <Switch>
-            <Route exact path="/thuongngay">
+            <Route path="/thuongngay">
               <SPThuongNgay />
             </Route>
-            <Route exact path="/">
-              <Content />
+            <Route path="">
+              <Main />
             </Route>
           </Switch>
         </div>
       </Router>
+      
     )
 }
