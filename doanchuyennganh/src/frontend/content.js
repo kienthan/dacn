@@ -22,7 +22,7 @@ export default function Content(){
 
            <div className="container-fluid row text-center" >
                 <div className="col-lg-6 col-md-6 col-sm-12">
-                    <img src="https://cdn3.yame.vn/pimg/so-mi-td-r-on-gian-solid-m23-0020219/78e44db7-fdc0-0500-6b39-0017f7046f59.jpg?w=540&h=756&c=true&ntf=false"/>
+                    <img src="https://cdn3.yame.vn/pimg/so-mi-td-r-on-gian-solid-m23-0020219/78e44db7-fdc0-0500-6b39-0017f7046f59.jpg?w=540&h=756&c=true&ntf=false" />
                 </div>
                  <div className="col-lg-6 col-md-6 col-sm-12">
                     <img src="https://cdn2.yame.vn/pimg/ao-thun-basic-rong-y-original-summer-m13-0020236/13b6cc44-23ed-0700-600c-0017fc640a70.jpg?w=540&h=756&c=true&ntf=false"/>
