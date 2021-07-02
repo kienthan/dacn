@@ -1,4 +1,5 @@
-hr{
-    width: 60px;
-    color: white;
+#hr{
+    width: 80px;
+    background-color: #8a2be2;
+    margin-left: 1px;
 }

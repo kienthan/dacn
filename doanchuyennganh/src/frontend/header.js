@@ -3,7 +3,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    NavLink
   } from "react-router-dom";
 import Content from "./footer";
 import SPThuongNgay from "./spthuongngay";
@@ -24,8 +25,10 @@ export default function Header(){
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <Link to="/">Trang Chủ <span className="sr-only"></span></Link>
+                    <li className="">
+                        <NavLink href="/" activeClassName="selectedLink">Trang Chủ</NavLink>
+                        <NavLink href="/" activeClassName="selectedLink">Trang Chủ1</NavLink>
+                        <NavLink href="/" activeClassName="selectedLink">Trang Chủ2</NavLink>
                     </li>
                     
                     <li className="nav-item dropdown active">
@@ -72,11 +75,9 @@ export default function Header(){
                 </nav>
         </div>
           <Switch>
-            <Route exact path="/thuongngay">
-              <SPThuongNgay />
+            <Route exact path="/thuongngay" component={SPThuongNgay}>
             </Route>
-            <Route exact path="/">
-              <Content />
+            <Route exact path="/" component={Content}>
             </Route>
           </Switch>
         </div>
