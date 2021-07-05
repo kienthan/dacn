@@ -6,6 +6,7 @@ import {
     Link,
     NavLink
   } from "react-router-dom";
+import Detail from "./detail";
 import Content from "./footer";
 import SPThuongNgay from "./spthuongngay";
 
@@ -76,6 +77,8 @@ export default function Header(){
             <Route exact path="/thuongngay" component={SPThuongNgay}>
             </Route>
             <Route exact path="/" component={Content}>
+            </Route>
+            <Route exact path="/" component={Detail}>
             </Route>
           </Switch>
         </div>

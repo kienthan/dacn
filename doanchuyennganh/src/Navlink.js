@@ -76,13 +76,12 @@ export default function Header(){
                 </nav>
         </div>
           <Switch>
+            
             <Route exact path="/thuongngay" component={SPThuongNgay}>
             </Route>
             <Route exact path="/" component={Main}>
             </Route>
-            <Route exact path="/detail" component={Detail} >
-                
-            </Route>
+            <Route  path="/detail" component={Detail} ></Route>
           </Switch>
         </div>
       </Router>

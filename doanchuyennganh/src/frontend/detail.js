@@ -1,7 +1,7 @@
 import React from 'react';
+import Footer from './footer';
 
-class Detail extends React.Component{
-    render(){
+function Detail(){
         return(
             <div className="container-fluid">
                 <div className="row">
@@ -43,9 +43,8 @@ class Detail extends React.Component{
 
                     </div>
                 </div>
-                
+                <Footer />
             </div>
         );
     }
-}
-export default Detail    
+export default Detail;

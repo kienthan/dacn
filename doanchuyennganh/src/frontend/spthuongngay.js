@@ -3,8 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link, 
-  NavLink
+  Link
 } from "react-router-dom";
 import Detail from "./detail";
 import Footer from "./footer";
@@ -12,8 +11,6 @@ import Footer from "./footer";
 class SPThuongNgay extends React.Component {
     render() {
       return (
-        <Router>
-
           <div className="container-fluid">
             
             <div className="row">  
@@ -81,15 +78,7 @@ class SPThuongNgay extends React.Component {
                     <Footer />
                     </div>
               </div>
-              <Switch>
-            <Route path="/detail">
-              <Detail />
-            </Route>
-          </Switch>
-            
         </div>
-                  
-        </Router>
       )
     }
   }
