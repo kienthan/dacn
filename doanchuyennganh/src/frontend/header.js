@@ -27,8 +27,6 @@ export default function Header(){
                     <ul className="navbar-nav">
                     <li className="">
                         <NavLink href="/" activeClassName="selectedLink">Trang Chủ</NavLink>
-                        <NavLink href="/" activeClassName="selectedLink">Trang Chủ1</NavLink>
-                        <NavLink href="/" activeClassName="selectedLink">Trang Chủ2</NavLink>
                     </li>
                     
                     <li className="nav-item dropdown active">

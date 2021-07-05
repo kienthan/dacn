@@ -6,6 +6,7 @@ import {
     Link, 
     NavLink
   } from "react-router-dom";
+import Detail from "./frontend/detail";
 import Main from "./frontend/main";
 import SPThuongNgay from "./frontend/spthuongngay";
 
@@ -75,11 +76,12 @@ export default function Header(){
                 </nav>
         </div>
           <Switch>
-            <Route path="/thuongngay">
-              <SPThuongNgay />
+            <Route exact path="/thuongngay" component={SPThuongNgay}>
             </Route>
-            <Route path="">
-              <Main />
+            <Route exact path="/" component={Main}>
+            </Route>
+            <Route exact path="/detail" component={Detail} >
+                
             </Route>
           </Switch>
         </div>
