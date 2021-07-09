@@ -71,6 +71,16 @@ export default function Header(){
                         </div>
                         <div className="ml-3"><i className="fas fa-shopping-cart"></i></div>
                     </div>
+                    <div className="dropdown active">
+                        <Link className="nav-link dropdown-toggle"  id="navbarDropdown" 
+                        role="button" data-toggle="dropdown" >
+                        <i class="fas fa-user-alt"></i>
+                        </Link>
+                        <div className="dropdown-menu " aria-labelledby="navbarDropdown">
+                            <Link className="dropdown-item" to="/thuongngay">Thông tin </Link>
+                            <Link className="dropdown-item" to="/congso">Đăng xuất</Link>
+                        </div>
+                    </div>
                    
                     </form>
                 </nav>

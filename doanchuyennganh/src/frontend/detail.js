@@ -3,7 +3,8 @@ import Footer from './footer';
 
 function Detail(){
         return(
-            <div className="container-fluid">
+            <div>
+            <div className="container-fluid mt-3">
                 <div className="row">
                     <div className="col-lg-6 col-md-6 col-sm-12">
                         <h1>Day la hinh anh san pham</h1>
@@ -43,7 +44,9 @@ function Detail(){
 
                     </div>
                 </div>
-                <Footer />
+                
+            </div>
+            <Footer />
             </div>
         );
     }
