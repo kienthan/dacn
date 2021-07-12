@@ -1,0 +1,120 @@
+use master
+IF EXISTS(SELECT NAME FROM SYS.DATABASES WHERE NAME = `QL_QuanAo`) THEN
+	DROP DATABASE `QL_QuanAo`
+END IF;
+ 
+CREATE DATABASE `QL_QuanAo`;
+ 
+use `QL_QuanAo`;
+ 
+create table `ADMIN`
+(
+	username	varchar(100)	not null,
+	password	varchar(100)	not null,
+	PRIMARY KEY (username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+create table `KHACHHANG`
+(
+	sdt		int(11)			not null,
+	email		varchar(100)		not null,
+	matkhau		varchar(100)		not null,
+	hoten		varchar(200) COLLATE utf8_general_ci	not null,
+	ngaysinh	date			null,
+	gioitinh	tinyint	default 0	,
+	diachi		varchar(200) COLLATE utf8_general_ci	not null,
+	PRIMARY KEY (sdt)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+create table `BRAND`
+(
+	idbrand		int(11)		not null AUTO_INCREMENT,
+	brandname	varchar(100) 	COLLATE utf8_general_ci	not null,
+	PRIMARY KEY (idbrand)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+create table `SIZE`
+(
+	idsize		int(11)		not null AUTO_INCREMENT,
+	size		varchar(20)	not null,
+	PRIMARY KEY (idsize)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+create table `GIA`
+(
+	idprice		int(11)		not null AUTO_INCREMENT,
+	price		double		not null,
+	saleoff		double		not null,
+	PRIMARY KEY (idprice)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+create table `NHANVIEN`
+(
+	manv		int(11)		not null AUTO_INCREMENT,
+	hoten		varchar(200) 	COLLATE utf8_general_ci	not null,
+	ngaysinh	date		not null,
+	gioitinh	varchar(20) 	COLLATE utf8_general_ci	not null,
+	diachi		varchar(200) 	COLLATE utf8_general_ci	not null,
+	PRIMARY KEY (manv)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+create table `MATHANG`
+(
+	mamh		int(11)		not null AUTO_INCREMENT,
+	tenmh		varchar(200)	COLLATE utf8_general_ci not null,
+	theloai		varchar(50)	COLLATE utf8_general_ci not null,
+	PRIMARY KEY (mamh)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+create table `CHITIETMATHANG`
+(
+	mactmh		int(11)		not null,
+	idbrand		int(11)		not null,
+	mota		text		null,
+	idgia		int(11)		not null,
+	soluongton	int		not null,
+	img		text		not null,
+	tinhtrang	varchar(50) COLLATE utf8_general_ci not null,
+	PRIMARY KEY (mactmh),
+	FOREIGN KEY (mactmh) references MATHANG(mamh),
+	FOREIGN KEY (idbrand) references BRAND(idbrand),
+	FOREIGN KEY (idgia) references GIA(idprice)
+	
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+create table `HOADON`
+(
+	mahd			int(11)		not null AUTO_INCREMENT,
+	sdt			int(11)		not null,
+	manv			int(11)		not null,
+	ngaymua			date		not null,
+	ngaygiao		date		not null,
+	diachigiaohang		varchar(200) COLLATE utf8_general_ci not null,
+	ghichu			text		null,
+	tongtien		float		not null,
+	PRIMARY KEY (mahd),
+	FOREIGN KEY (sdt) references KHACHHANG(sdt),
+	FOREIGN KEY (manv) references NHANVIEN(manv)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+create table `CHITIETHOADON`
+(
+	mahd		int(11)		not null,
+	mamh		int(11)		not null,
+	idsize		int(11)		not null ,
+	soluong		int		not null,
+	thanhtien	float		not null,
+	PRIMARY KEY (mahd),
+	FOREIGN KEY (idsize) references SIZE(idsize),
+	FOREIGN KEY (mahd) references HOADON(mahd),
+	FOREIGN KEY (mamh) references MATHANG(mamh)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+
