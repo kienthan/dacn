@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './Navlink';
+import App from './frontend/login';
 import reportWebVitals from './reportWebVitals'; 
 
 ReactDOM.render(
