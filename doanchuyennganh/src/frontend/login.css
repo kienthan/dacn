@@ -1,7 +1,7 @@
 
 #login__content{
     color:white;
-    margin-top: 10%;    
+    margin-top: 0;    
 }
 #sdt {
    width: 300px;
@@ -16,7 +16,7 @@
 }
 #__content{
     background:rgba(244, 91, 105, 1);
-    height: 500px;
+    height: 500;
 }
 h1{
     margin-top: 20%;

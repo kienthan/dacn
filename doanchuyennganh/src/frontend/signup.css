@@ -24,14 +24,6 @@ h3{
 #btn__more{
     margin-bottom: 20px;
 }
-button{
-    margin-left: 180px;
-    margin-top: 10px;
-}
-button:hover{
-    background-color: orange;
-    transition: 0.5s;
-}
 #content_left{
     margin-top: 60px;
 }

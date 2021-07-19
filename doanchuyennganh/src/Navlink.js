@@ -9,6 +9,8 @@ import {
 import Detail from "./frontend/detail";
 import Main from "./frontend/main";
 import SPThuongNgay from "./frontend/spthuongngay";
+import Login from "./frontend/login";
+import SignUp from "./frontend/signup";
 
 export default function Header(){
     return(
@@ -72,7 +74,7 @@ export default function Header(){
                         <div className="ml-3"><i className="fas fa-shopping-cart"></i></div>
                     </div>
                     <div className="dropdown active">
-                        <Link className="nav-link dropdown-toggle"  id="navbarDropdown" 
+                        <Link className="nav-link dropdown-toggle"  id="navbarDropdown" to="/login"
                         role="button" data-toggle="dropdown" >
                         <i class="fas fa-user-alt"></i>
                         </Link>
@@ -92,6 +94,10 @@ export default function Header(){
             <Route exact path="/" component={Main}>
             </Route>
             <Route  path="/detail" component={Detail} ></Route>
+
+            <Route  path="/login" component={Login} ></Route>
+
+            <Route  path="/signup" component={SignUp} ></Route>
           </Switch>
         </div>
       </Router>

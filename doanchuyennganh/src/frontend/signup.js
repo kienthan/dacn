@@ -1,13 +1,11 @@
 import React from 'react';
 import './signup.css'
+import Footer from './footer';
 
 export default function SignUp(){
     return(
-        <div className="container " >
-            <div className=" col-lg-12 mb-3 text-center">
-                    <img src="./img/logo.jpg" width="200px" alt="logo" />    
-                </div>
-           <div > 
+        <div  >
+           <div className="container-fluid"> 
                 <form className="row" onSubmit={handleSubmit} >
                     <div className="col-lg-6 col-md-6" id="__content">
                         <h3 className=" mt-3"> ĐĂNG KÍ TÀI KHOẢN </h3>
@@ -38,11 +36,12 @@ export default function SignUp(){
                         <div className="mb-3 row ">
                         <input type="text" placeholder="Nhập Địa Chỉ"  className="form-control " id="sdt" />
                         </div>  
-                        <button type="submit" className="btn btn-warning">Đăng Ký</button>
+                        <p type="submit" style={{marginLeft:'30%'}} className="btn btn-warning">Đăng Ký</p>
                     </div>
                 </form>
             
             </div>
+            <Footer />
            </div>
     );
 }
