@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 
-export const Products = () =>
+export const Actions = () =>
 {
     let [products, setProducts] = useState([]);
     let [productLength, setProductLength] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost/php-react/all-products.php")
+        fetch("http://localhost/php_react/all_mathang.php")
           .then((res) => {
             return res.json();
           })
           .then((data) => {
             if (data.success) {
-                setProducts(data.users.reverse());
+                setProducts(data.products.reverse());
                 setProductLength(true);
             } else {
                 setProductLength(0);
@@ -88,7 +88,7 @@ export const Products = () =>
 
 
     return {
-        Products,
+        products,
         //editMode,
         //cancelEdit,
         //updateProduct,

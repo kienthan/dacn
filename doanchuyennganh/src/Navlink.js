@@ -11,6 +11,7 @@ import Main from "./frontend/main";
 import SPThuongNgay from "./frontend/spthuongngay";
 import Login from "./frontend/login";
 import SignUp from "./frontend/signup";
+import SanPham from './frontend/sanpham'
 
 export default function Header(){
     return(
@@ -30,9 +31,14 @@ export default function Header(){
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav">
                     <li className="nav-item active">
-                        <NavLink to="/" activeClassName="nav-link" >Trang Chủ</NavLink>
+                        <NavLink to="" activeClassName="nav-link" >Trang Chủ</NavLink>
                         
                     </li>
+                    <li className="nav-item active nav-link" >
+                        <NavLink to="/sanpham"  activeStyle={{color:'#000',textDecoration:'none'}}>Sản Phẩm</NavLink>
+                        
+                    </li>
+                   
                     
                     <li className="nav-item dropdown active">
                         <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -93,11 +99,13 @@ export default function Header(){
             </Route>
             <Route exact path="/" component={Main}>
             </Route>
-            <Route  path="/detail" component={Detail} ></Route>
+            <Route  path="/chitiet/:mamh" component={Detail} ></Route>
 
             <Route  path="/login" component={Login} ></Route>
 
             <Route  path="/signup" component={SignUp} ></Route>
+
+            <Route exact  path="/sanpham" component={SanPham} ></Route>
           </Switch>
         </div>
       </Router>

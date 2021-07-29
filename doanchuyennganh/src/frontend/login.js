@@ -2,11 +2,7 @@ import React from 'react';
 import Footer from './footer';
 import './login.css';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link, 
-    NavLink
+    Link
   } from "react-router-dom";
 
 
@@ -46,10 +42,10 @@ export default function SignIn(){
                     <input type="password" className="form-control text-center" id="mk" placeholder="Mật khẩu"/>
                 </div>
                 <Link to="/signup">
-                    <button type="submit" className="btn btn-dark mr-3" after >Đăng Ký</button>
+                    <p className="text-decoration-none text-dark">Tạo tài khoản mới !</p>
                 </Link>
 
-                <button type="submit" className="btn btn-success" after >Đăng Nhập</button>
+                <button type="submit" className="btn btn-success">Đăng Nhập</button>
                 </form>
             </div>
             

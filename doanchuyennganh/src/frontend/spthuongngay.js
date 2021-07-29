@@ -1,11 +1,8 @@
 import React from "react"
 import {
-  BrowserRouter as Router,
-  Switch,
   Route,
   Link
 } from "react-router-dom";
-import Detail from "./detail";
 import Footer from "./footer";
 
 class SPThuongNgay extends React.Component {
