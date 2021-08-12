@@ -8,13 +8,15 @@ import {
   } from "react-router-dom";
 import Detail from "./frontend/detail";
 import Main from "./frontend/main";
-import SPThuongNgay from "./frontend/spthuongngay";
 import Login from "./frontend/login";
 import SignUp from "./frontend/signup";
 import SanPham from './frontend/sanpham'
+import {DataProvider} from './Context';
+import Shoppingcart from './frontend/ShoppingCart/Shoppingcart';
 
 export default function Header(){
     return(
+        <DataProvider>
         <Router>
         <div>
             
@@ -94,9 +96,6 @@ export default function Header(){
                 </nav>
         </div>
           <Switch>
-            
-            <Route exact path="/thuongngay" component={SPThuongNgay}>
-            </Route>
             <Route exact path="/" component={Main}>
             </Route>
             <Route  path="/chitiet/:mamh" component={Detail} ></Route>
@@ -106,9 +105,11 @@ export default function Header(){
             <Route  path="/signup" component={SignUp} ></Route>
 
             <Route exact  path="/sanpham" component={SanPham} ></Route>
+
+            <Route exact  path="/cart" component={Shoppingcart} ></Route>            
           </Switch>
         </div>
       </Router>
-      
+      </DataProvider>
     )
 }

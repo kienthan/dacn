@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import {DataProvider} from './Context';
+import {BrowserRouter as Router} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
+    <DataProvider>
+      <Router>    
+      <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,6 +23,9 @@ function App() {
         </a>
       </header>
     </div>
+    </Router>
+    </DataProvider>
+
   );
 }
 

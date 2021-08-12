@@ -1,0 +1,10 @@
+
+
+.total a{
+    text-decoration: none;
+    background: #333;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px 25px;
+}
