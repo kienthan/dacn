@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './footer.css'
 export default function Footer(){
     return(
@@ -15,37 +16,32 @@ export default function Footer(){
                     </div>
                     <div className="col-md-6 col-lg-7 text-center text-md-right">
                     
-                    <a className="ml-3" href="#">
-                        <img src="./img/fb.png" alt="Facebook"
+                    <Link className="ml-3" href="#">
+                        <img src="../img/fb.png" alt="Facebook"
                         width='30px' height='30px'/>
-                    </a>
+                    </Link>
     
-                    <a className="ml-3" href="#">
-                        <img src="./img/twitter.png" alt="Twitter"
+                    <Link className="ml-3" href="#">
+                        <img src="../img/twitter.png" alt="Twitter"
                         width='30px' height='30px'/>
-                    </a>
+                    </Link>
             
-                    <a className="ml-3" href="#">
-                        <img src="./img/google.png" alt="Google"
+                    <Link className="ml-3" href="#">
+                        <img src="../img/google.png" alt="Google"
                         width='30px' height='30px'/>
-                    </a>
+                    </Link>
         
-                    <a className="ml-3" href="#">
-                        <img src="./img/linkedin.png" alt="Linkedin"
+                    <Link className="ml-3" href="#">
+                        <img src="../img/linkedin.png" alt="Linkedin"
                         width='30px' height='30px'/>
-                    </a>
+                    </Link>
             
-                    <a className="ml-3" href="#">
-                        <img src="./img/instagram.png" alt="Instagram"
+                    <Link className="ml-3" href="#">
+                        <img src="../img/instagram.png" alt="Instagram"
                         width='30px' height='30px'/>
-                    </a>
-
+                    </Link>
                     </div>
-        
-
                 </div>
-        
-
                 </div>
             </div>
 

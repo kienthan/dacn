@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import {DataContext} from '../../Context'
-import {Link, NavLink} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export class Cart extends Component {
     static contextType = DataContext;
-
     componentDidMount(){
         this.context.getTotal();
     }
+
     
     render() {
-        const {cart,increase,reduction,removeProduct,total} = this.context;
+        const {cart,increase,reduction,removeProduct,total,Thanhtoan} = this.context;
         if(cart.length === 0){
             return <h2 style={{textAlign:"center"}}>Giỏ Hàng Chưa Có Gì </h2>
         }else{
@@ -29,13 +29,14 @@ export class Cart extends Component {
                                    <div className="col-lg-9">
                                     <div className="m-auto">
                                         <h2>{item.tenmh}</h2>
-                                        <span>${item.price * item.count}</span>
+                                        <span>Giá tiền: {item.price * item.count}</span>
                                     </div>
-                                    <div className="amount">
+                                    <div className="amount"> 
                                         <button className="count btn btn-success mr-2" onClick={() => reduction(item.mamh)}> - </button>
                                         <span>{item.count}</span>
                                         <button className="count btn btn-success ml-2" onClick={() => increase(item.mamh)}> + </button>
                                     </div>
+                                    
                                     <div className="btn btn-primary mt-3" onClick={() => removeProduct(item.mamh)}>Xoá mặt hàng</div>
                                 </div>
                                </div>
@@ -45,8 +46,8 @@ export class Cart extends Component {
                         ))
                     }
                     <div className="total" style={{float:'right', marginRight:'10%'}}>
-                        <NavLink to="/payment" activeClassName="btn btn-primary" >Thanh Toán</NavLink>
-                        <h3>Tổng tiền: {total}</h3>
+                    <h5>Tổng tiền: <span style={{color:'red'}}>{total} VNĐ</span></h5>
+                        <Link to="/payment"   ><button className="btn btn-info mb-3">Thanh toán</button></Link>
                     </div>
                 </>
                 )

@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
 import {DataContext} from '../Context'
 import {Link} from 'react-router-dom'
-// import Colors from './Colors'
-// import '../css/Details.css'
+import Footer from './footer';
 
 
 export class Details extends Component {
     static contextType = DataContext;
     state = {
-        product: []
+        product: [],
     }
 
     getProduct = () =>{
-        if(this.props.match.params.mamh){
+        if(this.props.match.params.url){
             const res = this.context.products;
             const data = res.filter(item =>{
-                return item.mamh === this.props.match.params.mamh
+                return item.url === this.props.match.params.url
             })
             this.setState({product: data})
         }
@@ -24,8 +23,6 @@ export class Details extends Component {
     componentDidMount(){
         this.getProduct();
     }
-
-
     render() {
         const {product} = this.state;
         const {addCart} = this.context;
@@ -65,6 +62,7 @@ export class Details extends Component {
                                     <h4>Thông tin sản phẩm</h4>
                                     <p>{item.mota}</p>
                                     <p>Hãng sản xuất: {item.brandname}</p>
+                                    
                                 </div>
                                 <Link type="submit" className="btn btn-warning mt-3" to="/cart" onClick={() => addCart(item.mamh)} >
                                     Thêm Vào Giỏ Hàng
@@ -75,7 +73,8 @@ export class Details extends Component {
                            </div>
                     )
                 })
-            } 
+            }
+            <Footer /> 
          </div>
         )
     }

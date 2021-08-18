@@ -7,8 +7,8 @@ export class DataProvider extends Component {
     state = {
         products: [],
         cart: [],
-        total: 0
-        
+        total: 0,
+        user:''
     };
 
 
@@ -73,10 +73,47 @@ export class DataProvider extends Component {
         },0)
         this.setState({total: res})
     };
+
+    Dangnhap = () => {
+        // const {user} = this.state;
+        // this.setState({user:tk})
+        // this.setState({ user: user})
+        alert('asdsadas')
+    }
+    Dangxuat = () => {
+
+    }
+    Thanhtoan = (a,b) => {
+        const {cart} = this.state;
+        var d = new Date();
+        var n = d.toLocaleDateString();
+        for (var i =0 ; i < cart.length; i++)
+        {
+            var donhang = {
+                mamh :cart[i].mamh,
+                sdt: a,
+                diachi: b,
+                ngaymua: n,
+                thanhtien : cart[i].count * cart[i].price
+            };
+            console.log(donhang);
+        }  
+        alert("Đơn hàng đã đặt thành công");
+        localStorage.clear();
+        window.location.href ='/'
+    }
+    Admin = (a,b) =>{
+        const {products} = this.state;
+        if( a !== products.mamh && b ==='')
+        alert('Thanh cong')
+        else 
+        alert('that bai');
+    }
     
     componentDidUpdate(){
-        localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
-        localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
+        // localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
+        // localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
+        
     };
 
     componentDidMount(){
@@ -102,16 +139,15 @@ export class DataProvider extends Component {
               .catch((err) => {
                 console.log(err);
               });
-              
     }
    
 
     render() {
-        const {products, cart,total} = this.state;
-        const {addCart,reduction,increase,removeProduct,getTotal} = this;
+        const {products, cart,total,user} = this.state;
+        const {addCart,reduction,increase,removeProduct,getTotal,Dangnhap,Thanhtoan,Admin} = this;
         return (
             <DataContext.Provider 
-            value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal}}>
+            value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal,Dangnhap,user,Thanhtoan,Admin}}>
                 {this.props.children}
             </DataContext.Provider>
         )

@@ -5,20 +5,18 @@ import {DataContext} from '../Context'
 export class Products extends Component {
 
     static contextType = DataContext;
+    state = {
+        product: [],
+    }
 
-    render() {
-      const {products} = this.context;
-        // const pageHT =1;
-        // const spmoitrang = 8;
-        // const sotrang = Math.ceil (products.length/ spmoitrang);
-        // const SPCuoi = pageHT * spmoitrang;
-        // const SPDau = SPCuoi -spmoitrang +1;
-        return (
-            <div className="container">
-              <div className="row">
-
-              {
-                products.map(item =>{
+    getProduct = () =>{
+        var kq;
+        if(this.props.match.params.idphanloai){
+            const res = this.context.products;
+            const data = res.filter(item =>{
+                return item.idphanloai === this.props.match.params.idphanloai
+            })
+             kq = data.map(item =>{
                   return(
                       <div key={item.mamh} className="col-lg-3 mb-3">   
                               <div className="card" >
@@ -32,6 +30,22 @@ export class Products extends Component {
                       </div>
                   )
               })
+        }
+        return kq;
+    };
+
+    componentDidMount(){
+        this.getProduct();
+    }
+
+    render() {
+    //   const {products} = this.context;
+        return (
+            <div className="container">
+              <div className="row">
+
+              {
+                this.getProduct()
               }
               </div>
                
