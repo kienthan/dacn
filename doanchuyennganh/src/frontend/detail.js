@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {DataContext} from '../Context'
 import {Link} from 'react-router-dom'
 import Footer from './footer';
+import Menutop from './menutop';
 
 
 export class Details extends Component {
@@ -28,6 +29,7 @@ export class Details extends Component {
         const {addCart} = this.context;
         return (
             <div>
+                <Menutop/>
             {
                 
                 product.map((item) =>{
@@ -64,7 +66,7 @@ export class Details extends Component {
                                     <p>Hãng sản xuất: {item.brandname}</p>
                                     
                                 </div>
-                                <Link type="submit" className="btn btn-warning mt-3" to="/cart" onClick={() => addCart(item.mamh)} >
+                                <Link type="submit" className="btn btn-warning mt-3" to="/sanpham" onClick={() => addCart(item.mamh) } >
                                     Thêm Vào Giỏ Hàng
                                 </Link>
                                

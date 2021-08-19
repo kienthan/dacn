@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {DataContext} from '../../Context'
 import { Link } from 'react-router-dom';
+import Menutop  from '../menutop';
+import Footer from '../footer';
 
 export class Cart extends Component {
     static contextType = DataContext;
@@ -10,12 +12,13 @@ export class Cart extends Component {
 
     
     render() {
-        const {cart,increase,reduction,removeProduct,total,Thanhtoan} = this.context;
+        const {cart,increase,reduction,removeProduct,total} = this.context;
         if(cart.length === 0){
-            return <h2 style={{textAlign:"center"}}>Giỏ Hàng Chưa Có Gì </h2>
+            return <><Menutop /><h2 style={{textAlign:"center"}}>Giỏ Hàng Chưa Có Gì </h2></>
         }else{
             return (
-                <>
+                <div>
+                <Menutop />
                     {
                         cart.map(item =>(
                             <div className="container" key={item.mamh}>
@@ -45,11 +48,14 @@ export class Cart extends Component {
                             
                         ))
                     }
-                    <div className="total" style={{float:'right', marginRight:'10%'}}>
+                    <div className="mb-5" style={{float:'right', marginRight:'10%'}}>
                     <h5>Tổng tiền: <span style={{color:'red'}}>{total} VNĐ</span></h5>
                         <Link to="/payment"   ><button className="btn btn-info mb-3">Thanh toán</button></Link>
                     </div>
-                </>
+                   <div style={{marginTop:'100px'}}>
+                   <Footer />
+                   </div>
+                </div>
                 )
             }
         }

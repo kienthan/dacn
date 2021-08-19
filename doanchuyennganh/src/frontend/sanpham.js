@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {DataContext} from '../Context'
+import Footer from './footer';
+import Menutop from './menutop';
 
 export class Products extends Component {
 
@@ -14,9 +16,10 @@ export class Products extends Component {
         // const SPCuoi = pageHT * spmoitrang;
         // const SPDau = SPCuoi -spmoitrang +1;
         return (
-            <div className="container">
+          <div>
+            <Menutop />
+          <div className="container">
               <div className="row">
-
               {
                 products.map(item =>{
                   return(
@@ -34,7 +37,8 @@ export class Products extends Component {
               })
               }
               </div>
-               
+              </div>
+              <Footer />
             </div>
         )
     }

@@ -6,45 +6,6 @@ export default function Footer(){
         <div>
             <footer className="page-footer font-small unique-color-dark mt-2">
 
-            <div style={{backgroundColor: '#6351ce'}}>
-                <div className="container">
-
-                <div className="row py-4 d-flex align-items-center">
-                    <div className="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                    <h6 className="mb-0" style={{color:'white'}}>
-                        Get connected with us on social networks!</h6>
-                    </div>
-                    <div className="col-md-6 col-lg-7 text-center text-md-right">
-                    
-                    <Link className="ml-3" href="#">
-                        <img src="../img/fb.png" alt="Facebook"
-                        width='30px' height='30px'/>
-                    </Link>
-    
-                    <Link className="ml-3" href="#">
-                        <img src="../img/twitter.png" alt="Twitter"
-                        width='30px' height='30px'/>
-                    </Link>
-            
-                    <Link className="ml-3" href="#">
-                        <img src="../img/google.png" alt="Google"
-                        width='30px' height='30px'/>
-                    </Link>
-        
-                    <Link className="ml-3" href="#">
-                        <img src="../img/linkedin.png" alt="Linkedin"
-                        width='30px' height='30px'/>
-                    </Link>
-            
-                    <Link className="ml-3" href="#">
-                        <img src="../img/instagram.png" alt="Instagram"
-                        width='30px' height='30px'/>
-                    </Link>
-                    </div>
-                </div>
-                </div>
-            </div>
-
 
             <div className="container-fluid text-center text-md-left"
              style={{backgroundColor:'#39364D', color:'white'}}>
@@ -55,7 +16,7 @@ export default function Footer(){
                 <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 mt-3">
 
     
-                    <h6 className="text-uppercase font-weight-bold">Company name</h6>
+                    <h6 className="text-uppercase font-weight-bold">Cửa hàng bán quần áo</h6>
                     <hr id="hr" />
 
                     <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
@@ -69,21 +30,32 @@ export default function Footer(){
                 <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 mt-3">
 
 
-                    <h6 className="text-uppercase font-weight-bold">Products</h6>
+                    <h6 className="text-uppercase font-weight-bold">Thông Tin Thêm</h6>
                     <hr id="hr" />
                     <p>
-                    <a href="#!">MDBootstrap</a>
+                    <Link className="ml-3" href="#">
+                        <img src="../img/fb.png" alt="Facebook"
+                        width='30px' height='30px'/>
+                    </Link>
                     </p>
                     <p>
-                    <a href="#!">MDWordPress</a>
+                    <Link className="ml-3" href="#">
+                        <img src="../img/google.png" alt="Google"
+                        width='30px' height='30px'/>
+                    </Link>
                     </p>
                     <p>
-                    <a href="#!">BrandFlow</a>
+                    <Link className="ml-3" href="#">
+                        <img src="../img/linkedin.png" alt="Linkedin"
+                        width='30px' height='30px'/>
+                    </Link>
                     </p>
-                    <p>
-                    <a href="#!">Bootstrap Angular</a>
+                    <p>         
+                    <Link className="ml-3" href="#">
+                        <img src="../img/instagram.png" alt="Instagram"
+                        width='30px' height='30px'/>
+                    </Link>
                     </p>
-
                 </div>
             
 
@@ -91,19 +63,19 @@ export default function Footer(){
                 <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 mt-3">
 
                 
-                    <h6 className="text-uppercase font-weight-bold">Useful links</h6>
+                    <h6 className="text-uppercase font-weight-bold">Sản phẩm đặc trưng</h6>
                     <hr id="hr" />
                     <p>
-                    <a href="#!">Your Account</a>
+                    <Link  to="/3">Áo Polo</Link>
                     </p>
                     <p>
-                    <a href="#!">Become an Affiliate</a>
+                    <Link to="/1">Áo Thun</Link>
                     </p>
                     <p>
-                    <a href="#!">Shipping Rates</a>
+                    <Link to="/4">T-Shirt</Link>
                     </p>
                     <p>
-                    <a href="#!">Help</a>
+                    <Link to="/5">Quần Jeans</Link>
                     </p>
 
                 </div>
@@ -111,16 +83,16 @@ export default function Footer(){
                 <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 mt-3">
 
                 
-                    <h6 className="text-uppercase font-weight-bold">Contact</h6>
+                    <h6 className="text-uppercase font-weight-bold">Liên hệ</h6>
                     <hr id="hr" />  
                     <p>
-                    <i className="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                    <i className="fas fa-home mr-3"></i> 331 Quốc Lộ 1,An Phú Đồng, Quận 12 TP.HCM</p>
                     <p>
-                    <i className="fas fa-envelope mr-3"></i> info@example.com</p>
+                    <i className="fas fa-envelope mr-3"></i> ntt@ntt.edu.vn</p>
                     <p>
-                    <i className="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                    <i className="fas fa-phone mr-3"></i> 1900 2039</p>
                     <p>
-                    <i className="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                    <i className="fas fa-print mr-3"></i> 028 39 404 759</p>
 
                 </div>
             
@@ -129,13 +101,6 @@ export default function Footer(){
         
 
             </div>
-                <div className="footer-copyright text-center py-3" 
-                    style={{backgroundColor:'#080808', color:'#989898'}}>
-                    © 2021 Copyright:
-                    <a href="https://mdbootstrap.com/"> TDK Design</a>
-                </div>
-            
-
             </footer>
         </div>
 

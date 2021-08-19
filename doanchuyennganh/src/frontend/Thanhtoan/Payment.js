@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {DataContext} from '../../Context';
 import Footer from '../footer';
+import Menutop from '../menutop';
 
 export class Products extends Component {
-    state ={sdt:'', diachi:''};
+    state ={sdt:'', diachi:'',ghichu:''};
 
     static contextType = DataContext;
 
@@ -15,10 +16,13 @@ export class Products extends Component {
         e.preventDefault();
     }
 
+   
+
     render() {
         const {cart,total,Thanhtoan} = this.context;
         return (
             <>
+            <Menutop />
             <div className="container">
               <div className="row ">
                 <table className='table text-justify' >
@@ -77,12 +81,18 @@ export class Products extends Component {
                         <input type="text" className="form-control" onChange={this.xulynhap} name="diachi"/>
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label  class="col-sm-2 col-form-label">Ghi chú</label>
+                        <div class="col-sm-10">
+                        <input type="text" className="form-control" onChange={this.xulynhap} name="ghichu"/>
+                        </div>
+                    </div>
                 </div>
 
 
                     <div className='col-lg-12 col-md-12 col-sm-12 text-center'>
-                    <button className='btn btn-danger ' disabled={total === 0 ? true : false}
-                    onClick={() => {Thanhtoan(this.state.sdt,this.state.diachi)}} >Xác nhận đơn hàng</button>
+                    <button className='btn btn-danger ' disabled={total === 0 || this.state.sdt ==='' || this.state.diachi === '' ? true : false}
+                    onClick={() => {Thanhtoan(this.state.sdt,this.state.diachi,this.state.ghichu)}} >Xác nhận đơn hàng</button>
                     </div>
               </div>
                

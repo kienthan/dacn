@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {DataContext} from '../Context'
+import Footer from './footer';
+import Menutop from './menutop';
 
 export class Products extends Component {
 
@@ -41,14 +43,17 @@ export class Products extends Component {
     render() {
     //   const {products} = this.context;
         return (
-            <div className="container">
-              <div className="row">
+            <div>
+                <Menutop />
+                <div className="container">
+                    <div className="row">
 
-              {
-                this.getProduct()
-              }
-              </div>
-               
+                    {
+                        this.getProduct()
+                    }
+                    </div>
+                </div>
+                <Footer />
             </div>
         )
     }

@@ -83,24 +83,63 @@ export class DataProvider extends Component {
     Dangxuat = () => {
 
     }
-    Thanhtoan = (a,b) => {
-        const {cart} = this.state;
-        var d = new Date();
-        var n = d.toLocaleDateString();
+
+
+    Thanhtoan = (a,b,c) => {
+        const {cart,total} = this.state;
+        //------------ Code nhap vao hoa don-------------------------------
+        var donhang = {
+            sdt : a,
+            diachigiaohang :b,
+            ghichu : c,
+            tongtien: total
+        }
+            //------- Fetch vao don hang-----------------------------
+        fetch("http://localhost/php_react/hoadon.php",{
+            method:"POST",
+            headers: {"Content-Type" : "application/json",},
+            body: JSON.stringify(donhang),
+            }).then((res) => {return res.json();
+            }).then((data) =>
+            { 
+            if(data.id){
+                alert(data.msg);
+                alert("Đơn hàng đã đặt thành công");
+            }
+            else{
+                alert(data.msg);
+            }
+            }).catch((err) => {console.log(err);
+            });
+        //--------------O day bat dau code chi tiet hoa don-----------------------
+
         for (var i =0 ; i < cart.length; i++)
         {
-            var donhang = {
+            var ctdonhang = {
                 mamh :cart[i].mamh,
-                sdt: a,
-                diachi: b,
-                ngaymua: n,
+                soluong : parseInt(cart[i].count),
                 thanhtien : cart[i].count * cart[i].price
             };
-            console.log(donhang);
+            //--------------- Fetch CTHOADOn-----------------------
+                fetch("http://localhost/php_react/chitiethoadon.php",{
+                method:"POST",
+                headers: {"Content-Type" : "application/json",},
+                body: JSON.stringify(ctdonhang),
+                }).then((res) => {return res.json();
+                }).then((data) =>
+                { 
+                if(data.id){
+                    alert(data.msg);
+                }
+                else{
+                    alert(data.msg);
+                }
+                }).catch((err) => {console.log(err);
+                });
         }  
-        alert("Đơn hàng đã đặt thành công");
-        localStorage.clear();
-        window.location.href ='/'
+        alert('Đặt hàng thành công');
+        // localStorage.clear();
+        // window.location.href ='/'
     }
     Admin = (a,b) =>{
         const {products} = this.state;
@@ -111,8 +150,8 @@ export class DataProvider extends Component {
     }
     
     componentDidUpdate(){
-        // localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
-        // localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
+        localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
+        localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
         
     };
 
