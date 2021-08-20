@@ -8,7 +8,8 @@ export class DataProvider extends Component {
         products: [],
         cart: [],
         total: 0,
-        user:''
+        user:'',
+        mahdnew: []
     };
 
 
@@ -86,14 +87,16 @@ export class DataProvider extends Component {
 
 
     Thanhtoan = (a,b,c) => {
-        const {cart,total} = this.state;
-        //------------ Code nhap vao hoa don-------------------------------
+         const {total,mahdnew} = this.state;
+        // //------------ Code nhap vao hoa don-------------------------------
         var donhang = {
+            mahd : mahdnew[0].mahd,
             sdt : a,
             diachigiaohang :b,
             ghichu : c,
             tongtien: total
         }
+        console.log(donhang);
             //------- Fetch vao don hang-----------------------------
         fetch("http://localhost/php_react/hoadon.php",{
             method:"POST",
@@ -112,14 +115,23 @@ export class DataProvider extends Component {
             }).catch((err) => {console.log(err);
             });
         //--------------O day bat dau code chi tiet hoa don-----------------------
-
+        this.CTHD();
+        
+        alert('Đặt hàng thành công');
+        // localStorage.clear();
+        // window.location.href ='/'
+    }
+    CTHD = () => {
+        const {cart,mahdnew} = this.state;
         for (var i =0 ; i < cart.length; i++)
         {
             var ctdonhang = {
+                mahd : mahdnew[0].mahd,
                 mamh :cart[i].mamh,
                 soluong : parseInt(cart[i].count),
                 thanhtien : cart[i].count * cart[i].price
             };
+            console.log(ctdonhang)
             //--------------- Fetch CTHOADOn-----------------------
                 fetch("http://localhost/php_react/chitiethoadon.php",{
                 method:"POST",
@@ -129,7 +141,7 @@ export class DataProvider extends Component {
                 }).then((data) =>
                 { 
                 if(data.id){
-                    alert(data.msg);
+                    alert(data.msg);   
                 }
                 else{
                     alert(data.msg);
@@ -137,10 +149,8 @@ export class DataProvider extends Component {
                 }).catch((err) => {console.log(err);
                 });
         }  
-        alert('Đặt hàng thành công');
-        // localStorage.clear();
-        // window.location.href ='/'
     }
+
     Admin = (a,b) =>{
         const {products} = this.state;
         if( a !== products.mamh && b ==='')
@@ -153,6 +163,19 @@ export class DataProvider extends Component {
         localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
         localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
         
+        //-----------------------------------------------------------------
+        fetch("http://localhost/php_react/laymahd.php")
+              .then((res) => {
+                return res.json();
+              })
+              .then((data) => {
+                if (data.success) {
+                    this.setState({mahdnew : data.mahd})
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
     };
 
     componentDidMount(){
@@ -178,15 +201,28 @@ export class DataProvider extends Component {
               .catch((err) => {
                 console.log(err);
               });
+
+              fetch("http://localhost/php_react/laymahd.php")
+              .then((res) => {
+                return res.json();
+              })
+              .then((data) => {
+                if (data.success) {
+                    this.setState({mahdnew : data.mahd})
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
     }
    
 
     render() {
         const {products, cart,total,user} = this.state;
-        const {addCart,reduction,increase,removeProduct,getTotal,Dangnhap,Thanhtoan,Admin} = this;
+        const {addCart,reduction,increase,removeProduct,getTotal,Dangnhap,Thanhtoan,Admin,CTHD} = this;
         return (
             <DataContext.Provider 
-            value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal,Dangnhap,user,Thanhtoan,Admin}}>
+            value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal,Dangnhap,user,Thanhtoan,Admin,CTHD}}>
                 {this.props.children}
             </DataContext.Provider>
         )

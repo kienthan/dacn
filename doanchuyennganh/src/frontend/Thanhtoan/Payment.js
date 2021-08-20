@@ -92,7 +92,9 @@ export class Products extends Component {
 
                     <div className='col-lg-12 col-md-12 col-sm-12 text-center'>
                     <button className='btn btn-danger ' disabled={total === 0 || this.state.sdt ==='' || this.state.diachi === '' ? true : false}
-                    onClick={() => {Thanhtoan(this.state.sdt,this.state.diachi,this.state.ghichu)}} >Xác nhận đơn hàng</button>
+                    onClick={
+                        () => {Thanhtoan(this.state.sdt,this.state.diachi,this.state.ghichu)}
+                        } >Xác nhận đơn hàng</button>
                     </div>
               </div>
                

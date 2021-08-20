@@ -49,7 +49,7 @@ class Menutop extends Component {
                             <div className="dropdown-menu " aria-labelledby="navbarDropdown">
                                 <Link className="dropdown-item" to="/1">Áo Thun</Link>
                             <div className="dropdown-divider"></div>
-                                <Link className="dropdown-item" to="/2">Áo Cơ Mi</Link>
+                                <Link className="dropdown-item" to="/2">Áo Sơ Mi</Link>
                             <div className="dropdown-divider"></div>
                                 <Link className="dropdown-item"  to="/3">Áo Polo</Link>
                             <div className="dropdown-divider"></div>
