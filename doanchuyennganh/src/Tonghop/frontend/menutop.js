@@ -3,7 +3,7 @@ import {
     Link, 
     NavLink
   } from "react-router-dom";
-  import {DataContext} from '../Context'
+  import {DataContext} from '../../Context'
 
 class Menutop extends Component {
     static contextType = DataContext;
@@ -74,7 +74,10 @@ class Menutop extends Component {
                             </div>
                             
                         </li>
-
+                        <li className="nav-item active nav-link" >
+                            <NavLink to="/backend">Quản lý sản Phẩm</NavLink>
+                            
+                        </li>
                         {/* {Dropdown list bo suu tap dang cap nhat} */}
                         {/* <li className="nav-item dropdown active">
                             <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -4,14 +4,16 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
-import Detail from "./frontend/detail";
-import Main from "./frontend/main";
-import SanPham from './frontend/sanpham'
+import Detail from "./Tonghop/frontend/detail";
+import Main from "./Tonghop/frontend/main";
+import SanPham from './Tonghop/frontend/sanpham'
 import {DataProvider,DataContext} from './Context';
-import Shoppingcart from './frontend/ShoppingCart/Shoppingcart';
-import Payment from './frontend/Thanhtoan/Payment';
-import Phanloaisp from './frontend/phanloaisp';
-import Timkiem from './frontend/timkiem';
+import Shoppingcart from './Tonghop/frontend/ShoppingCart/Shoppingcart';
+import Payment from './Tonghop/frontend/Thanhtoan/Payment';
+import Phanloaisp from './Tonghop/frontend/phanloaisp';
+import Timkiem from './Tonghop/frontend/timkiem';
+import Admin from './Tonghop/backend/Section/Header';
+import AllAdmin from './Tonghop/backend/Xulythongtin/Tatcasp';
 
 
 class Duongdan extends Component{
@@ -22,22 +24,27 @@ class Duongdan extends Component{
             <DataProvider>
             <Router>
             <div>
-            
-            
             <Switch>
                 <Route exact path="/" component={Main}>
                 </Route>
+
                 <Route exact path="/chitiet/:url" component={Detail} ></Route>
 
                 <Route exact  path="/sanpham" component={SanPham} ></Route>
 
-                <Route exact  path="/cart" component={Shoppingcart} ></Route> 
+                <Route exact  path="/backend" component={Admin} ></Route>
+
+                <Route exact  path="/backend/all" component={AllAdmin} ></Route>
+
+                <Route exact  path="/cart" component={Shoppingcart} ></Route>  
 
                 <Route exact  path="/payment" component={Payment} ></Route>        
 
                 <Route exact  path="/:idphanloai" component={Phanloaisp} ></Route> 
 
-                <Route exact  path="/timkiem/:tenmh" component={Timkiem} ></Route>          
+                <Route exact  path="/timkiem/:tenmh" component={Timkiem} ></Route>     
+
+                
             </Switch>
             </div>
         </Router>

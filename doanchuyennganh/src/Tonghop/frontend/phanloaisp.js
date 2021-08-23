@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import {DataContext} from '../Context'
+import {DataContext} from '../../Context'
 import Footer from './footer';
 import Menutop from './menutop';
 
