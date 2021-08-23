@@ -52,9 +52,6 @@ export class Cart extends Component {
                     <h5>Tổng tiền: <span style={{color:'red'}}>{total} VNĐ</span></h5>
                         <Link to="/payment"   ><button className="btn btn-info mb-3">Thanh toán</button></Link>
                     </div>
-                   <div style={{marginTop:'100px'}}>
-                   <Footer />
-                   </div>
                 </div>
                 )
             }

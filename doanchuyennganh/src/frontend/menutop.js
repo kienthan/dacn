@@ -37,14 +37,14 @@ class Menutop extends Component {
                             
                         </li>
                         <li className="nav-item active nav-link" >
-                            <NavLink to="/sanpham"  activeStyle={{color:'#000',textDecoration:'none'}}>Sản Phẩm</NavLink>
+                            <NavLink to="/sanpham">Tất Cả Sản Phẩm</NavLink>
                             
                         </li>
                     
                         
                         <li className="nav-item dropdown active">
                             <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Phân Loại
+                            Các Loại áo
                             </Link>
                             <div className="dropdown-menu " aria-labelledby="navbarDropdown">
                                 <Link className="dropdown-item" to="/1">Áo Thun</Link>
@@ -54,13 +54,25 @@ class Menutop extends Component {
                                 <Link className="dropdown-item"  to="/3">Áo Polo</Link>
                             <div className="dropdown-divider"></div>
                                 <Link className="dropdown-item"  to="/4">T-Shirt</Link>
+                           
                             <div className="dropdown-divider"></div>
+                                <Link className="dropdown-item"  to="/8">Áo Blazer</Link>
+                            </div>
+                            
+                        </li>
+
+                        <li className="nav-item dropdown active">
+                            <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Các loại quần
+                            </Link>
+                            <div className="dropdown-menu " aria-labelledby="navbarDropdown">   
                                 <Link className="dropdown-item"  to="/5">Quần Jean</Link>
                             <div className="dropdown-divider"></div>
                                 <Link className="dropdown-item"  to="/6">Quần Kaki</Link>
                             <div className="dropdown-divider"></div>
                                 <Link className="dropdown-item"  to="/7">Quần Short</Link>
                             </div>
+                            
                         </li>
 
                         {/* {Dropdown list bo suu tap dang cap nhat} */}

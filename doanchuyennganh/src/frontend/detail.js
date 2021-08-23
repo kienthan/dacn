@@ -57,10 +57,12 @@ export class Details extends Component {
                                     </div>
                                 <div className="col-lg-3 col-md-6 col-sm-12">
                                     <h4>{item.tenmh}</h4>
+                                    <h4>{item.tinhtrang}</h4>
                                     <h5>Giá tiền: {parseFloat(item.price).toLocaleString()} VNĐ</h5>
                                     {/* {<p>Giảm giá : {parseFloat(item.saleoff) *100 }%</p>} */}
                                     {giamgia()}
                                     <div >
+                                        <hr />
                                     <h4>Thông tin sản phẩm</h4>
                                     <p>{item.mota}</p>
                                     <p>Hãng sản xuất: {item.brandname}</p>

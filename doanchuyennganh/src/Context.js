@@ -45,8 +45,7 @@ export class DataProvider extends Component {
         const { cart } = this.state;
         cart.forEach(item =>{
             if(item.mamh === id){
-                parseInt(item.count);
-                item.count === 1 ? item.count +=1 : item.count += 1;
+                item.count =    parseInt(item.count === 10 ? item.count = 10 : item.count += 1);
             }
         })
         this.setState({cart: cart});
