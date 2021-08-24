@@ -29,14 +29,15 @@ export class Products extends Component {
                       <table className="table table-striped">
                         <thead>
                         <tr>
-                        <th scope="col" width='20px'>STT</th>
-                        <th scope="col">Tên Mặt Hàng</th>
-                        <th scope="col">IMG</th>
-                        <th scope="col">Tình trạng</th>
-                        <th scope="col">Hãng</th>
-                        <th scope="col">Giá</th>
-                        <th scope="col">Giảm giá</th>
-                        <th scope="col" width='40%'>Mô tả</th>
+                        <th scope="col" width='5%'>Mã</th>
+                        <th scope="col" width='10%'>Tên Mặt Hàng</th>
+                        <th scope="col" width='10%'>IMG</th>
+                        <th scope="col" width='10%'>Tình trạng</th>
+                        <th scope="col" width='10%'>Hãng</th>
+                        <th scope="col" width='10%'>Giá</th>
+                        <th scope="col" width='10%'>Giảm giá</th>
+                        <th scope="col" width='25%'>Mô tả</th>
+                        <th scope="col" width='10%'>Chức năng</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,6 +50,13 @@ export class Products extends Component {
                         <td className="text-break">{item.price}</td>
                         <td className="text-break">{item.saleoff}</td>
                         <td className="text-break text-wrap">{item.mota}</td>
+                        <td className="text-break text-wrap">
+                           
+                        <Link to={'/backend/capnhatsp/'+item.mamh}> 
+                            <button className='btn btn-primary'>Cập nhật</button>
+                            </Link>
+                            
+                        </td>
                         </tr>
                     </tbody>
                       </table>

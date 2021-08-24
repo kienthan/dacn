@@ -9,7 +9,10 @@ export class DataProvider extends Component {
         cart: [],
         total: 0,
         user:'',
-        mahdnew: []
+        mahdnew: [],
+        phanloai:[],
+        saleoff:[],
+        brand:[]
     };
 
 
@@ -187,7 +190,7 @@ export class DataProvider extends Component {
             this.setState({total: dataTotal});
         }
         //-------------------------------------------
-
+        //-------------lay tat ca mat hang --------------------
         fetch("http://localhost/php_react/all_mathang.php")
               .then((res) => {
                 return res.json();
@@ -200,7 +203,7 @@ export class DataProvider extends Component {
               .catch((err) => {
                 console.log(err);
               });
-
+              //---------lay ma hoa don--------------------------
               fetch("http://localhost/php_react/laymahd.php")
               .then((res) => {
                 return res.json();
@@ -213,15 +216,16 @@ export class DataProvider extends Component {
               .catch((err) => {
                 console.log(err);
               });
+
     }
    
 
     render() {
-        const {products, cart,total,user} = this.state;
+        const {products, cart,total,user,phanloai,saleoff} = this.state;
         const {addCart,reduction,increase,removeProduct,getTotal,Dangnhap,Thanhtoan,Admin,CTHD} = this;
         return (
             <DataContext.Provider 
-            value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal,Dangnhap,user,Thanhtoan,Admin,CTHD}}>
+            value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal,Dangnhap,user,Thanhtoan,Admin,CTHD,phanloai,saleoff}}>
                 {this.props.children}
             </DataContext.Provider>
         )

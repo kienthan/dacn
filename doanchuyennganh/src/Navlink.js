@@ -14,6 +14,9 @@ import Phanloaisp from './Tonghop/frontend/phanloaisp';
 import Timkiem from './Tonghop/frontend/timkiem';
 import Admin from './Tonghop/backend/Section/Header';
 import AllAdmin from './Tonghop/backend/Xulythongtin/Tatcasp';
+import ThemSP from './Tonghop/backend/Xulythongtin/ThemMatHang';
+import DSCapnhat from './Tonghop/backend/Xulythongtin/HienDS';
+import CapnhatSP from './Tonghop/backend/Xulythongtin/Capnhatsp';
 
 
 class Duongdan extends Component{
@@ -35,6 +38,12 @@ class Duongdan extends Component{
                 <Route exact  path="/backend" component={Admin} ></Route>
 
                 <Route exact  path="/backend/all" component={AllAdmin} ></Route>
+
+                <Route exact  path="/backend/them" component={ThemSP} ></Route>
+
+                <Route exact  path="/backend/capnhat" component={DSCapnhat} ></Route>
+
+                <Route exact  path="/backend/capnhatsp/:mamh" component={CapnhatSP} ></Route>
 
                 <Route exact  path="/cart" component={Shoppingcart} ></Route>  
 

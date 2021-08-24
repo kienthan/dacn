@@ -14,7 +14,7 @@ export default function Header()
                     <ul className="nav flex-column text-decoration-none ">
                         <img src='./img/logo.jpg' width='200px' alt='logo_fashion' />
                             <li className="nav-item" >
-                                <Link to="/" className="nav-link" >Trang admin</Link>
+                                <Link to="/backend" className="nav-link" >Trang admin</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to='/backend/all' >Danh sách mặt hàng</Link>
@@ -24,9 +24,9 @@ export default function Header()
                             Mặt hàng
                             </Link>
                             <div className="dropdown-menu " aria-labelledby="navbarDropdown">
-                                <Link className="dropdown-item" >Thêm mặt hàng</Link>
+                                <Link className="dropdown-item" to='/backend/them'>Thêm mặt hàng</Link>
                             <div className="dropdown-divider"></div>
-                                <Link className="dropdown-item" >Sửa mặt hàng</Link>
+                                <Link className="dropdown-item"to='/backend/capnhat' >Sửa mặt hàng</Link>
                             <div className="dropdown-divider"></div>
                                 <Link className="dropdown-item" >Xoá mặt hàng</Link>    
                             </div>
@@ -35,6 +35,10 @@ export default function Header()
                     </ul>
                     </nav>
                 </div>
+            </div>
+
+            <div>
+            <h1 className="text-center">Trang quản lý sản phẩm</h1>
             </div>
         </div>
     )
