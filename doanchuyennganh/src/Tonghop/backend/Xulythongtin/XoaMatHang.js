@@ -15,6 +15,30 @@ export class Products extends Component {
       this.setState({SPDau: pageNumber *10 - 10 +1});
     }
 
+    XoaSP(id){
+
+        if(window.confirm("Bạn có chắc là xoá mặt hàng này ?"))
+        {   
+            fetch("http://localhost/php_react/xoasp.php",{
+            method:"POST",
+            headers: {"Content-Type" : "application/json",},
+            body: JSON.stringify({mamh : id}),
+            }).then((res) => {return res.json();
+            }).then((data) =>
+            { 
+            if(data.id){
+                alert(data.msg);
+                window.location.href = "/backend";
+            }
+            else{
+                alert(data.msg);
+            }
+            }).catch((err) => {console.log(err);
+            });
+            window.location.href = "/backend/xoasp";
+        }
+    }
+
     render() {
        const {products} = this.context;
 
@@ -51,11 +75,7 @@ export class Products extends Component {
                         <td className="text-break">{item.saleoff}</td>
                         <td className="text-break text-wrap">{item.mota}</td>
                         <td className="text-break text-wrap">
-                           
-                        <Link to={'/backend/capnhatsp/'+item.mamh}> 
-                            <button className='btn btn-primary'>Cập nhật</button>
-                            </Link>
-                            
+                            <button className='btn btn-danger' onClick={() => this.XoaSP(item.mamh)}>Xoá mặt hàng</button>
                         </td>
                         </tr>
                     </tbody>

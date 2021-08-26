@@ -31,7 +31,7 @@ export class Products extends Component {
                           </div>
                       </div>
                   )
-              })
+              });
         }
         return kq;
     };

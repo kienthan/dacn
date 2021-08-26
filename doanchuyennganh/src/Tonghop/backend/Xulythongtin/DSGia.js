@@ -1,68 +1,72 @@
 import React, { Component } from 'react'
-import {DataContext} from '../../../Context'
-import Pagination from "react-js-pagination";
+
 import { Link } from 'react-router-dom';
 
 export class Products extends Component {
 
-    state ={ activePage: 1,SPCuoi:10,SPDau:1,products: []}
+    state ={gia:[]}
+    componentDidMount(){
+        fetch("http://localhost/php_react/layidgia.php")
+                      .then((res) => {
+                        return res.json();
+                      })
+                      .then((data) => {
+                        if (data.success) {
+                            this.setState({gia : data.gia})
+                        }
+                      })
+                      .catch((err) => {
+                        console.log(err);
+                      });
+    }
 
-    static contextType = DataContext;
-
-    handlePageChange(pageNumber) {
-      this.setState({activePage: pageNumber});
-      this.setState({SPCuoi: pageNumber *10});
-      this.setState({SPDau: pageNumber *10 - 10 +1});
+    DeletePrice = (idgia) =>{
+        if(window.confirm("Bạn có chắc là xoá mặt hàng này ?"))
+        {
+            fetch("http://localhost/php_react/deleteprice.php",{
+                method:"POST",
+                headers: {"Content-Type" : "application/json",},
+                body: JSON.stringify({idprice : idgia}),
+                }).then((res) => {return res.json();
+                }).then((data) =>
+                { 
+                if(data.id){
+                    alert(data.msg);
+                    window.location.href = "/backend/gia";
+                }
+                else{
+                    alert(data.msg);
+                }
+                }).catch((err) => {console.log(err);
+                });
+                window.location.href = "/backend/gia";
+        }
+        
     }
 
     render() {
-       const {products} = this.context;
 
-      const xuatsp = () => {
-        var kq;
-        var begin, end;
-        begin = this.state.SPDau;
-        end = this.state.SPCuoi;
-        kq =  products.map(item =>{
-           if(item.mamh <= end && item.mamh >= begin)
-                  return(
-                      <table className="table table-striped">
-                        <thead>
-                        <tr>
-                        <th scope="col" width='5%'>Mã</th>
-                        <th scope="col" width='10%'>Tên Mặt Hàng</th>
-                        <th scope="col" width='10%'>IMG</th>
-                        <th scope="col" width='10%'>Tình trạng</th>
-                        <th scope="col" width='10%'>Hãng</th>
-                        <th scope="col" width='10%'>Giá</th>
-                        <th scope="col" width='10%'>Giảm giá</th>
-                        <th scope="col" width='25%'>Mô tả</th>
-                        <th scope="col" width='10%'>Chức năng</th>
-                        </tr>
-                    </thead>
+        const Hienthi = () => {
+            const {gia} = this.state;
+            var kq = gia.map(item => {
+                return(
                     <tbody>
-                        <tr>
-                        <th scope="row">{item.mamh}</th>
-                        <td className="text-break">{item.tenmh}</td>
-                        <td className="text-break">{item.img}</td>
-                        <td className="text-break">{item.tinhtrang}</td>
-                        <td className="text-break">{item.brandname}</td>
-                        <td className="text-break">{item.price}</td>
-                        <td className="text-break">{item.saleoff}</td>
-                        <td className="text-break text-wrap">{item.mota}</td>
-                        <td className="text-break text-wrap">
-                           
-                        <Link to={'/backend/capnhatsp/'+item.mamh}> 
-                            <button className='btn btn-primary'>Cập nhật</button>
-                            </Link>
-                            
-                        </td>
-                        </tr>
+                            <tr>
+                            <th>{item.idprice}</th>
+                            <td>{parseFloat(item.price).toLocaleString()} VNĐ</td>
+                            <td>
+                                <Link to={'/backend/capnhatgia/'+item.price}>
+                                <button className='btn btn-success'>Cập nhật</button>
+                                </Link>
+                            </td>
+                            <td>
+                            <button className='btn btn-danger' onClick={() => { this.DeletePrice(item.idprice)}}> Xoá</button>
+                            </td>
+                            </tr>
                     </tbody>
-                      </table>
-                  )
-              })
-              return kq;
+                )
+            })
+            return kq;
       }
         return (
           <div className="">
@@ -110,21 +114,17 @@ export class Products extends Component {
                 </div>
           <div className="container-fluid">
               <div className="row">
-              <div class='col-lg-12 col-md-12 col-sm-12 mt-3'>
-              <div style={{float:'right'}}>
-              <Pagination
-                  activePage={this.state.activePage}
-                  itemsCountPerPage={10}
-                  totalItemsCount={products.length}
-                  pageRangeDisplayed={6}
-                  onChange={this.handlePageChange.bind(this)}
-                  itemClass="page-item"
-                  linkClass="page-link"
-                  hideNavigation
-                />
-              </div>
-              </div>
-              {xuatsp()}
+              <table className="table table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col" width='' >Mã</th>
+                            <th scope="col" width='40%'>Bảng giá</th>
+                            <th scope="col" width='20%'>Cập nhật</th>
+                            <th scope="col" width='20%'>Xoá</th>
+                            </tr>
+                        </thead>
+                        {Hienthi()}
+                    </table>
               </div>
               </div>
             </div>

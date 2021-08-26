@@ -72,7 +72,7 @@ export class DataProvider extends Component {
     getTotal = ()=>{
         const{cart} = this.state;
         const res = cart.reduce((prev, item) => {
-            return prev + (item.price * item.count);
+            return prev + ((1 - item.saleoff) * item.price *item.count );
         },0)
         this.setState({total: res})
     };
@@ -120,8 +120,8 @@ export class DataProvider extends Component {
         this.CTHD();
         
         alert('Đặt hàng thành công');
-        // localStorage.clear();
-        // window.location.href ='/'
+        localStorage.clear();
+        window.location.href ='/'
     }
     CTHD = () => {
         const {cart,mahdnew} = this.state;
@@ -162,22 +162,9 @@ export class DataProvider extends Component {
     }
     
     componentDidUpdate(){
-        localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
-        localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
+        // localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
+        // localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
         
-        //-----------------------------------------------------------------
-        fetch("http://localhost/php_react/laymahd.php")
-              .then((res) => {
-                return res.json();
-              })
-              .then((data) => {
-                if (data.success) {
-                    this.setState({mahdnew : data.mahd})
-                }
-              })
-              .catch((err) => {
-                console.log(err);
-              });
     };
 
     componentDidMount(){

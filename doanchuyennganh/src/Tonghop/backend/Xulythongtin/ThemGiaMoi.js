@@ -1,18 +1,53 @@
-import React from 'react';
-import {
-    Link,
-    BrowserRouter as Router,
-  } from "react-router-dom";
+import React, { Component } from 'react'
 
-export default function Header()
-{   
-    return(
-        <div >
-            <div>
-                <div style={{minWidth:'250px',maxWidth:'250px',maxHeight:'1500px',minHeight:'660px',float:'left',backgroundColor:'#fff000'}}>
-                    <nav className="navbar">
+import { Link } from 'react-router-dom';
+
+export class Products extends Component {
+
+    state ={giamoi:''}
+
+    
+
+
+    xulynhap = (e) => {
+        this.setState({[e.target.name]: e.target.value });
+        }
+    
+        xulyluutru = (e) =>{
+        e.preventDefault();
+        const obj = {
+            giamoi: this.state.giamoi
+        }
+        fetch("http://localhost/php_react/addprice.php",{
+                method:"POST",
+                headers: {"Content-Type" : "application/json",},
+                body: JSON.stringify(obj),
+                }).then((res) => {return res.json();
+                }).then((data) =>
+                { 
+                if(data.id){
+                    alert(data.msg);
+                    window.location.href = "/backend/gia";
+                }
+                else{
+                    alert(data.msg);
+                }
+                }).catch((err) => {console.log(err);
+                });
+                e.target.reset();
+                window.location.href = "/backend/gia";
+    }
+
+
+
+    render() {
+        return (
+          <div className="">
+              
+            <div style={{minWidth:'250px',maxWidth:'250px',maxHeight:'2000px',minHeight:'2000px',float:'left',backgroundColor:'#fff000'}}>
+            <nav className="navbar">
                     <ul className="nav flex-column text-decoration-none ">
-                        <img src='./img/logo.jpg' width='200px' alt='logo_fashion' />
+                        <img src='../../img/logo.jpg' width='200px' alt='logo_fashion' />
                             <li className="nav-item" >
                                 <Link to="/backend" className="nav-link" >Trang admin</Link>
                             </li>
@@ -51,11 +86,22 @@ export default function Header()
                     </ul>
                     </nav>
                 </div>
+          <div className="container-fluid">
+              <div className="row">
+                    <h1 className=" col-lg-12 text-primary text-center">Thêm giá mới trong bảng giá</h1>
+              <form onSubmit={this.xulyluutru} className="col-lg-12 col-md-12 col-sm-12 mt-3">
+                <div className="mb-3">
+                    <label  className="form-label">Giá mới</label>
+                    <input type="number" className="form-control" onChange={this.xulynhap} min='99000' max='10000000'
+                     name="giamoi" />
+                </div>
+                <button type="submit" className="btn btn-primary">Thêm giá mới</button>
+                </form>
+              </div>
+              </div>
             </div>
-
-            <div>
-            <h1 className="text-center">Trang quản lý sản phẩm</h1>
-            </div>
-        </div>
-    )
+        )
+    }
 }
+
+export default Products

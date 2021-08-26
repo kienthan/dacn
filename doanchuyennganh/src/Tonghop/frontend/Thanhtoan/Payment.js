@@ -32,6 +32,7 @@ export class Products extends Component {
                         <th scope="col">Hình ảnh</th>
                         <th scope="col">Số lượng</th>
                         <th scope="col">Giá</th>
+                        <th scope="col">Giảm Giá</th>
                         <th scope="col">Thành tiền</th>
                         </tr>
                     </thead>
@@ -49,7 +50,8 @@ export class Products extends Component {
                                 </th>
                                 <th>{item.count} </th>
                                 <th>{item.price}</th>
-                                <th>{item.count * item.price}</th>
+                                <th>{parseFloat(item.saleoff)*100} %</th>
+                                <th>{((1-parseFloat(item.saleoff)) * (item.price * item.count)).toLocaleString() } VND</th>
                             </tr>
                          
                         ))
@@ -61,8 +63,9 @@ export class Products extends Component {
                     <th></th>
                     <th></th>
                     <th></th>
+                    <th></th>
                     <th>Tổng tiền</th>
-                    <th><p > <span style={{color:'red'}}>{total} VND</span></p></th>
+                    <th><p > <span style={{color:'red'}}>{total.toLocaleString()} VND</span></p></th>
                     </tr>
                     
                     </tbody>

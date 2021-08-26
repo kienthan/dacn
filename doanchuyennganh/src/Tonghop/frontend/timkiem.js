@@ -6,7 +6,7 @@ class Timkiem extends Component{
 
     state ={products :[]}
 
-    componentDidMount(){
+    getSP() {
         const obj = {tenmh: this.props.match.params.tenmh};
                     fetch("http://localhost/php_react/timkiem.php",
                     {method:"POST",headers: {"Content-Type" : "application/json",},body: JSON.stringify(obj), })
@@ -20,7 +20,11 @@ class Timkiem extends Component{
                 })
     }
 
-    componentDidUpdate(){
+    componentDidMount(){
+        this.getSP();
+    }
+
+    componentWillReceiveProps (){
         const obj = {tenmh: this.props.match.params.tenmh};
                     fetch("http://localhost/php_react/timkiem.php",
                     {method:"POST",headers: {"Content-Type" : "application/json",},body: JSON.stringify(obj), })

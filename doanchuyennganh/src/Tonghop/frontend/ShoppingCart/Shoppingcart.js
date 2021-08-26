@@ -32,7 +32,9 @@ export class Cart extends Component {
                                    <div className="col-lg-9">
                                     <div className="m-auto">
                                         <h2>{item.tenmh}</h2>
-                                        <span>Giá tiền: {item.price * item.count}</span>
+                                        <p>Giảm giá {parseFloat(item.saleoff)*100} %</p>
+                                        <p>Giá tiền: {(item.price * item.count).toLocaleString()} VND</p>
+                                        <p>Còn lại {((1-parseFloat(item.saleoff)) * (item.price * item.count)).toLocaleString() } VND </p>
                                     </div>
                                     <div className="amount"> 
                                         <button className="count btn btn-success mr-2" onClick={() => reduction(item.mamh)}> - </button>
@@ -49,7 +51,7 @@ export class Cart extends Component {
                         ))
                     }
                     <div className="mb-5" style={{float:'right', marginRight:'10%'}}>
-                    <h5>Tổng tiền: <span style={{color:'red'}}>{total} VNĐ</span></h5>
+                    <h5>Tổng tiền: <span style={{color:'red'}}>{total.toLocaleString()} VNĐ</span></h5>
                         <Link to="/payment"   ><button className="btn btn-info mb-3">Thanh toán</button></Link>
                     </div>
                 </div>

@@ -18,13 +18,12 @@ export class Products extends Component {
     }
 
     render() {
-      const {products,activePage,SPCuoi} = this.context;
+      const {products} = this.context;
       const xuatsp = () => {
         var kq;
         var begin, end;
         begin = this.state.SPDau;
         end = this.state.SPCuoi;
-        console.log(begin + '-----' + end);
         kq =  products.map(item =>{
            if(item.mamh <= end && item.mamh >= begin)
                   return(

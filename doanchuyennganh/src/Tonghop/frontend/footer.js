@@ -19,9 +19,7 @@ export default function Footer(){
                     <h6 className="text-uppercase font-weight-bold">Cửa hàng bán quần áo</h6>
                     <hr id="hr" />
 
-                    <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                    consectetur
-                    adipisicing elit.</p>
+                    <p>Đây là trang bán hàng trực tuyến, đảm bảo hàng thật chất lượng cao</p>
 
                 </div>
     
@@ -30,7 +28,7 @@ export default function Footer(){
                 <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 mt-3">
 
 
-                    <h6 className="text-uppercase font-weight-bold">Thông Tin Thêm</h6>
+                    <h6 className="text-uppercase font-weight-bold">Mạng Xã Hội</h6>
                     <hr id="hr" />
                     <p>
                     <Link className="ml-3" href="#">
