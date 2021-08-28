@@ -19,7 +19,10 @@ export class Products extends Component {
    
 
     render() {
-        const {cart,total,Thanhtoan} = this.context;
+        const {cart,total,Thanhtoan,user} = this.context;
+        if(user.length === 0 )
+        return (window.location.href='/login');
+        else
         return (
             <>
             <Menutop />
@@ -75,13 +78,15 @@ export class Products extends Component {
                     <div class="mb-3 row">
                         <label class="col-sm-2 col-form-label">Số điện thoại</label>
                         <div class="col-sm-10">
-                        <input type="text"  className="form-control" onChange={this.xulynhap} name="sdt" />
+                        <input type="text"  className="form-control" onChange={this.xulynhap} 
+                         value={user[0].sdt} readOnly/>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label  class="col-sm-2 col-form-label">Địa chỉ giao hàng</label>
                         <div class="col-sm-10">
-                        <input type="text" className="form-control" onChange={this.xulynhap} name="diachi"/>
+                        <input type="text" className="form-control" onChange={this.xulynhap} 
+                         value={user[0].diachi} readOnly/>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -94,9 +99,9 @@ export class Products extends Component {
 
 
                     <div className='col-lg-12 col-md-12 col-sm-12 text-center'>
-                    <button className='btn btn-danger ' disabled={total === 0 || this.state.sdt ==='' || this.state.diachi === '' ? true : false}
+                    <button className='btn btn-danger ' disabled={total === 0 ? true : false}
                     onClick={
-                        () => {Thanhtoan(this.state.sdt,this.state.diachi,this.state.ghichu)}
+                        () => {Thanhtoan(user[0].sdt,user[0].diachi,this.state.ghichu)}
                         } >Xác nhận đơn hàng</button>
                     </div>
               </div>

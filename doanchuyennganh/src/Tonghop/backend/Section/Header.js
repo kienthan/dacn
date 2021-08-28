@@ -1,13 +1,18 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {
-    Link,
-    BrowserRouter as Router,
+    Link
   } from "react-router-dom";
+  import {DataContext} from '../../../Context'
 
-export default function Header()
-{   
-    return(
-        <div >
+export default class Header extends Component {
+    static contextType = DataContext;
+    render(){
+        const {admin,Exit} = this.context;
+        if(admin.length === 0)
+        return(window.location.href='/loginforadmin');
+        else
+        return(
+            <div >
             <div>
                 <div style={{minWidth:'250px',maxWidth:'250px',maxHeight:'1500px',minHeight:'660px',float:'left',backgroundColor:'#fff000'}}>
                     <nav className="navbar">
@@ -27,6 +32,12 @@ export default function Header()
                             <li><Link className="nav-link" to='/backend/capnhat' >Sửa mặt hàng</Link></li>
                             <li><Link className="nav-link" to='/backend/xoasp'>Xoá mặt hàng</Link></li>  
                             <li className="nav-item">
+                            <li className="nav-item">
+                                <Link className="nav-link" to='/backend/khachhang' >Danh sách khách hàng</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to='/backend/themkhachhang' >Thêm khách hàng</Link>
+                            </li>
                                 <Link className="nav-link" to='/backend/hang' >Danh sách hãng</Link>
                             </li>
                             <li className="nav-item">
@@ -47,6 +58,7 @@ export default function Header()
                             <li className="nav-item">
                                 <Link className="nav-link" to='/' >Quay lại trang chủ</Link>
                             </li> 
+                            <button className="btn btn-success" onClick={() => {Exit()}}>Đăng xuất</button>
                         </li>
                     </ul>
                     </nav>
@@ -57,5 +69,6 @@ export default function Header()
             <h1 className="text-center">Trang quản lý sản phẩm</h1>
             </div>
         </div>
-    )
+        )
+    }
 }

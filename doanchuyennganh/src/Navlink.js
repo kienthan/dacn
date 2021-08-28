@@ -27,7 +27,13 @@ import UpdateBrand from './Tonghop/backend/Xulythongtin/UpdateBrand';
 import AddBrand from './Tonghop/backend/Xulythongtin/AddBrand';
 import UpdatePhanLoai from './Tonghop/backend/Xulythongtin/CapnhatPhanLoai';
 import ThemPhanLoai from './Tonghop/backend/Xulythongtin/ThemPhanLoai';
-
+import Login from './Tonghop/frontend/login';
+import SignUp from './Tonghop/frontend/signup';
+import Thongtin from './Tonghop/frontend/Thongtin';
+import Loginadmin from './Tonghop/frontend/Login_admin';
+import Khachhang from './Tonghop/backend/Xulythongtin/DsKhachHang';
+import Themkhachhang from './Tonghop/backend/Xulythongtin/Themkhachhang';
+import CapnhatKH from './Tonghop/backend/Xulythongtin/CapnhatKH';
 
 class Duongdan extends Component{
     static contextType = DataContext;
@@ -38,9 +44,14 @@ class Duongdan extends Component{
             <Router>
             <div>
             <Switch>
-                <Route exact path="/" component={Main}>
-                </Route>
+                <Route exact path="/" component={Main}></Route>
+                <Route exact path="/login" component={Login}></Route>
+                <Route exact path="/thongtin" component={Thongtin}></Route>
+                <Route exact path="/loginforadmin" component={Loginadmin}></Route>
 
+                <Route exact path="/signup" component={SignUp}></Route>
+
+                
                 <Route exact path="/chitiet/:url" component={Detail} ></Route>
 
                 <Route exact  path="/sanpham" component={SanPham} ></Route>
@@ -49,7 +60,11 @@ class Duongdan extends Component{
 
                 <Route exact  path="/backend/all" component={AllAdmin} ></Route>
 
+                <Route exact  path="/backend/khachhang" component={Khachhang} ></Route>
+
                 <Route exact  path="/backend/them" component={ThemSP} ></Route>
+
+                <Route exact  path="/backend/themkhachhang" component={Themkhachhang} ></Route>
 
                 <Route exact  path="/backend/themhang" component={AddBrand} ></Route>
 
@@ -62,6 +77,8 @@ class Duongdan extends Component{
                 <Route exact  path="/backend/xoasp" component={XoaSP} ></Route>
 
                 <Route exact  path="/backend/capnhatsp/:mamh" component={CapnhatSP} ></Route>
+
+                <Route exact  path="/backend/capnhatkhach/:sdt" component={CapnhatKH} ></Route>
                 
                 <Route exact  path="/backend/capnhatgia/:price" component={CapnhatGia} ></Route>
 
@@ -81,9 +98,8 @@ class Duongdan extends Component{
 
                 <Route exact  path="/:idphanloai" component={Phanloaisp} ></Route> 
 
-                <Route exact  path="/timkiem/:tenmh" component={Timkiem} ></Route>     
+                <Route exact  path="/timkiem/:tenmh" component={Timkiem} ></Route> 
 
-                
             </Switch>
             </div>
         </Router>

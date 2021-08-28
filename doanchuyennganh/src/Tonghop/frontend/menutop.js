@@ -18,7 +18,23 @@ class Menutop extends Component {
 
     }
     render(){
-        const {cart} = this.context;
+        const {cart,user,Dangxuat} = this.context;
+
+        const dangnhap = () => {
+            if( user.length === 0 )
+            return(
+                <div className="dropdown-menu " aria-labelledby="navbarDropdown">
+                    <Link className="dropdown-item" to="/login" disabled={true}>Đăng Nhập </Link>
+                </div>
+            )
+            else
+            return(
+                <div className="dropdown-menu " aria-labelledby="navbarDropdown">               
+                    <Link className="dropdown-item" to="/thongtin">Thông tin </Link>
+                    <Link className="dropdown-item" onClick={() => {Dangxuat()}}>Đăng xuất</Link>
+                </div>
+            )
+        }
         return(
             <div >
             <div className="text-center">
@@ -108,17 +124,13 @@ class Menutop extends Component {
                             
                         </div>
                         {/* {Dropdown list page dang nhap } */}
-                        {/* <div className="dropdown active">
-                            <Link className="nav-link dropdown-toggle"  id="navbarDropdown" to="/login"
+                        <div className="dropdown active">
+                            <Link className="nav-link dropdown-toggle"  id="navbarDropdown" 
                             role="button" data-toggle="dropdown" >
                             <i class="fas fa-user-alt"></i>
                             </Link>
-                            <div className="dropdown-menu " aria-labelledby="navbarDropdown">
-                            <Link className="dropdown-item" to="/login">Đăng Nhập </Link>
-                                <Link className="dropdown-item" to="/info">Thông tin </Link>
-                                <Link className="dropdown-item" >Đăng xuất</Link>
-                            </div>
-                        </div> */}
+                            {dangnhap()}
+                        </div>
                         
                         </form>
                         <div className="ml-3">

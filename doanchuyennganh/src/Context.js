@@ -8,11 +8,8 @@ export class DataProvider extends Component {
         products: [],
         cart: [],
         total: 0,
-        user:'',
-        mahdnew: [],
-        phanloai:[],
-        saleoff:[],
-        brand:[]
+        user:[],admin:[],
+        mahdnew: []
     };
 
 
@@ -77,14 +74,37 @@ export class DataProvider extends Component {
         this.setState({total: res})
     };
 
-    Dangnhap = () => {
-        // const {user} = this.state;
-        // this.setState({user:tk})
-        // this.setState({ user: user})
-        alert('asdsadas')
+    Dangnhap = (a,b) => {
+        if(a !== '' && b !== '')
+        {
+            const obj = {user: a, pass:b};
+                fetch("http://localhost/php_react/dangnhap.php",{
+                method:"POST",
+                headers: {"Content-Type" : "application/json",},
+                body: JSON.stringify(obj),
+                }).then((res) => {return res.json();
+                }).then((data) =>
+                { 
+                if (data.success) {
+                    this.setState({user : data.khachhang})
+                    if(this.state.user.length > 0 )
+                    {
+                        alert('Đăng nhập thành công');
+                    }
+                    else{
+                        alert('Đăng nhập thất bại');
+                    }
+                }
+                }).catch((err) => {console.log(err);
+                });
+
+        }
+        else
+        {alert('Tên đăng nhập hoặc mật khẩu không được để trống')}
     }
     Dangxuat = () => {
-
+        const {user} = this.state;
+        user.splice(0, user.length);
     }
 
 
@@ -116,7 +136,7 @@ export class DataProvider extends Component {
             }
             }).catch((err) => {console.log(err);
             });
-        //--------------O day bat dau code chi tiet hoa don-----------------------
+        // //--------------O day bat dau code chi tiet hoa don-----------------------
         this.CTHD();
         
         alert('Đặt hàng thành công');
@@ -131,7 +151,7 @@ export class DataProvider extends Component {
                 mahd : mahdnew[0].mahd,
                 mamh :cart[i].mamh,
                 soluong : parseInt(cart[i].count),
-                thanhtien : cart[i].count * cart[i].price
+                thanhtien : ((1-parseFloat(cart[0].saleoff)) * (cart[0].price * cart[0].count))
             };
             console.log(ctdonhang)
             //--------------- Fetch CTHOADOn-----------------------
@@ -154,16 +174,39 @@ export class DataProvider extends Component {
     }
 
     Admin = (a,b) =>{
-        const {products} = this.state;
-        if( a !== products.mamh && b ==='')
-        alert('Thanh cong')
-        else 
-        alert('that bai');
+        if(a ==='' || b==='')
+        {
+            alert('Tên đăng nhập và mật khẩu không được để trống')
+        }
+        else{
+            const obj = {admin : a, pass: b}
+            fetch("http://localhost/php_react/admin.php",{
+                method:"POST",
+                headers: {"Content-Type" : "application/json",},
+                body: JSON.stringify(obj),
+                }).then((res) => {return res.json();
+                }).then((data) =>
+                { 
+                if (data.success) {
+                    this.setState({admin : data.admin})
+                    alert('Đăng nhập vai trò quản trị thành công')
+                }
+                }).catch((err) => {console.log(err);
+                });
+        }
+    }
+    Exit =() =>{
+        const {admin} = this.state;
+        if(window.confirm("Bạn có chắc thoát khỏi trang này ?"))
+        {
+            admin.splice(0, admin.length)
+        }
+        window.location.href='/loginforadmin';
     }
     
     componentDidUpdate(){
-        // localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
-        // localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
+        localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
+        localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
         
     };
 
@@ -203,16 +246,15 @@ export class DataProvider extends Component {
               .catch((err) => {
                 console.log(err);
               });
-
     }
    
 
     render() {
-        const {products, cart,total,user,phanloai,saleoff} = this.state;
-        const {addCart,reduction,increase,removeProduct,getTotal,Dangnhap,Thanhtoan,Admin,CTHD} = this;
+        const {products, cart,total,user,phanloai,saleoff,admin} = this.state;
+        const {addCart,reduction,increase,removeProduct,getTotal,Dangnhap,Thanhtoan,Admin,CTHD,Dangxuat,Exit} = this;
         return (
             <DataContext.Provider 
-            value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal,Dangnhap,user,Thanhtoan,Admin,CTHD,phanloai,saleoff}}>
+            value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal,Dangnhap,user,Thanhtoan,Admin,CTHD,phanloai,saleoff,Dangxuat,admin,Exit}}>
                 {this.props.children}
             </DataContext.Provider>
         )
