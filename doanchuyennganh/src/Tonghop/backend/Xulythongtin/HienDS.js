@@ -26,21 +26,7 @@ export class Products extends Component {
         kq =  products.map(item =>{
            if(item.mamh <= end && item.mamh >= begin)
                   return(
-                      <table className="table table-striped">
-                        <thead>
-                        <tr>
-                        <th scope="col" width='5%'>Mã</th>
-                        <th scope="col" width='10%'>Tên Mặt Hàng</th>
-                        <th scope="col" width='10%'>IMG</th>
-                        <th scope="col" width='10%'>Tình trạng</th>
-                        <th scope="col" width='10%'>Hãng</th>
-                        <th scope="col" width='10%'>Giá</th>
-                        <th scope="col" width='10%'>Giảm giá</th>
-                        <th scope="col" width='25%'>Mô tả</th>
-                        <th scope="col" width='10%'>Chức năng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                     
                         <tr>
                         <th scope="row">{item.mamh}</th>
                         <td className="text-break">{item.tenmh}</td>
@@ -58,8 +44,6 @@ export class Products extends Component {
                             
                         </td>
                         </tr>
-                    </tbody>
-                      </table>
                   )
               })
               return kq;
@@ -72,40 +56,48 @@ export class Products extends Component {
                         <img src='../img/logo.jpg' width='200px' alt='logo_fashion' />
                             <li className="nav-item" >
                                 <Link to="/backend" className="nav-link" >Trang admin</Link>
+                                <hr />
+                            </li>
+                            
+                            <li className="nav-item">
+                                <Link className="nav-link" to='/backend/dshoadon' >Danh sách hoá đơn</Link>
+                                <hr />
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to='/backend/all' >Danh sách mặt hàng</Link>
                             </li>
                             <li className="nav-item dropdown active dropend">
-                            <Link className="nav-link">
-                            Mặt hàng
-                            </Link>
                             <li><Link className="nav-link" to='/backend/them'>Thêm mặt hàng</Link></li>
                             <li><Link className="nav-link" to='/backend/capnhat' >Sửa mặt hàng</Link></li>
                             <li><Link className="nav-link" to='/backend/xoasp'>Xoá mặt hàng</Link></li>  
+                            <hr />
                             <li className="nav-item">
                             <li className="nav-item">
                                 <Link className="nav-link" to='/backend/khachhang' >Danh sách khách hàng</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to='/backend/themkhachhang' >Thêm khách hàng</Link>
+                                <hr />
                             </li>
                                 <Link className="nav-link" to='/backend/hang' >Danh sách hãng</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to='/backend/themhang' >Thêm Hãng</Link>
+                                <hr />
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to='/backend/gia' >Danh sách bảng giá</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to='/backend/themgia' >Thêm giá mới</Link>
+                                <hr />
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to='/backend/phanloai' >Phân loại mặt hàng</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to='/backend/themphanloai' >Thêm phân loại</Link>
+                                <hr />
                             </li> 
                             <li className="nav-item">
                                 <Link className="nav-link" to='/' >Quay lại trang chủ</Link>
@@ -130,7 +122,24 @@ export class Products extends Component {
                 />
               </div>
               </div>
-              {xuatsp()}
+              <table className="table table-striped">
+                        <thead>
+                        <tr>
+                        <th scope="col" width='5%'>Mã</th>
+                        <th scope="col" width='10%'>Tên Mặt Hàng</th>
+                        <th scope="col" width='10%'>IMG</th>
+                        <th scope="col" width='10%'>Tình trạng</th>
+                        <th scope="col" width='10%'>Hãng</th>
+                        <th scope="col" width='10%'>Giá</th>
+                        <th scope="col" width='10%'>Giảm giá</th>
+                        <th scope="col" width='25%'>Mô tả</th>
+                        <th scope="col" width='10%'>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {xuatsp()}
+                            </tbody>
+                      </table>
               </div>
               </div>
             </div>

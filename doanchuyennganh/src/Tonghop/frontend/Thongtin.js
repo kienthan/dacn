@@ -2,15 +2,35 @@ import React, { Component } from 'react';
 import {DataContext} from '../../Context';
 import Footer from './footer';
 import Menutop from './menutop';
+import {Link}  from 'react-router-dom'
 
 export class Products extends Component {
+    state={hoadon:[]}
+    componentDidMount(){
+    this.LayHoaDon();
+    }
+
+    LayHoaDon(){
+        const obj = {sdt:this.context.user[0].sdt }
+        console.log(obj);
+            fetch("http://localhost/php_react/hoadonkh.php",
+                {method:"POST",headers: {"Content-Type" : "application/json",},body: JSON.stringify(obj), })
+                .then((res) => {return res.json();})
+                .then((data) =>{
+                if (data.success){
+                    this.setState({hoadon : data.hoadon})
+                    console.log(this.state.hoadon)
+                }
+                }).catch((err) =>{
+                console.log(err);
+            })
+    }
+
 
     static contextType = DataContext;
 
-
-   
-
     render() {
+        const {hoadon} = this.state;
         const {user} = this.context;
         if(user.length === 0 )
         return (window.location.href='/login');
@@ -50,12 +70,38 @@ export class Products extends Component {
                                     <th scope='row'>Giới tính</th>
                                     <td><b>{info.gioitinh}</b></td>
                                 </tr>
+                                <tr><Link to={'/thaydoimatkhau/'+info.sdt}>Thay đổi mật khẩu</Link></tr>
                             </tbody>
 
                            
                         ])
                     }
-                    
+                </table>
+                <h5>Lịch sử mua hàng</h5>
+                <table className="table table-striped">
+                    <tr>
+                        <th scope="col" >Số hoá đơn</th>
+                        <th scope="col" >Ngày mua</th>
+                        <th scope="col" >Số điện thoại</th>
+                        <th scope="col" >Địa chỉ</th>
+                        <th scope="col" >Tổng tiền</th>
+                    </tr>
+                    {hoadon.map(t => {
+                        if(hoadon.length > 0)
+                        return(
+                            <tbody>
+                                    <td><b>{t.mahd}</b></td>
+                                    <td><b>{t.ngaymua}</b></td>
+                                    <td><b>{t.sdt}</b></td>
+                                    <td><b>{t.diachigiaohang}</b></td>
+                                    <td><b>{parseFloat(t.tongtien).toLocaleString()} VND</b></td>
+                            </tbody>
+                        )
+                        else
+                        return(
+                            <h5>Bạn chưa có hoá đơn nào cả</h5>
+                        )
+                    })}
                 </table>
               </div>
                

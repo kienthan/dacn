@@ -91,9 +91,7 @@ export class DataProvider extends Component {
                     {
                         alert('Đăng nhập thành công');
                     }
-                    else{
-                        alert('Đăng nhập thất bại');
-                    }
+                    
                 }
                 }).catch((err) => {console.log(err);
                 });
@@ -151,7 +149,7 @@ export class DataProvider extends Component {
                 mahd : mahdnew[0].mahd,
                 mamh :cart[i].mamh,
                 soluong : parseInt(cart[i].count),
-                thanhtien : ((1-parseFloat(cart[0].saleoff)) * (cart[0].price * cart[0].count))
+                thanhtien : ((1-parseFloat(cart[i].saleoff)) * (cart[i].price * cart[i].count))
             };
             console.log(ctdonhang)
             //--------------- Fetch CTHOADOn-----------------------

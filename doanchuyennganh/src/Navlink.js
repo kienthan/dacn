@@ -34,6 +34,8 @@ import Loginadmin from './Tonghop/frontend/Login_admin';
 import Khachhang from './Tonghop/backend/Xulythongtin/DsKhachHang';
 import Themkhachhang from './Tonghop/backend/Xulythongtin/Themkhachhang';
 import CapnhatKH from './Tonghop/backend/Xulythongtin/CapnhatKH';
+import ChangePass from './Tonghop/frontend/Thaydoimatkhau';
+import DShoadon from './Tonghop/backend/Xulythongtin/DSHoaDon';
 
 class Duongdan extends Component{
     static contextType = DataContext;
@@ -45,9 +47,14 @@ class Duongdan extends Component{
             <div>
             <Switch>
                 <Route exact path="/" component={Main}></Route>
+
                 <Route exact path="/login" component={Login}></Route>
+
                 <Route exact path="/thongtin" component={Thongtin}></Route>
+
                 <Route exact path="/loginforadmin" component={Loginadmin}></Route>
+
+                <Route exact path="/backend/dshoadon" component={DShoadon}></Route>
 
                 <Route exact path="/signup" component={SignUp}></Route>
 
@@ -93,6 +100,8 @@ class Duongdan extends Component{
                 <Route exact  path="/backend/phanloai" component={PhanLoai} ></Route>
 
                 <Route exact  path="/cart" component={Shoppingcart} ></Route>  
+
+                <Route exact  path="/thaydoimatkhau/:sdt" component={ChangePass} ></Route>  
 
                 <Route exact  path="/payment" component={Payment} ></Route>        
 

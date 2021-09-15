@@ -60,7 +60,7 @@ class Menutop extends Component {
                         
                         <li className="nav-item dropdown active">
                             <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Các Loại áo
+                            Các Loại Áo
                             </Link>
                             <div className="dropdown-menu " aria-labelledby="navbarDropdown">
                                 <Link className="dropdown-item" to="/1">Áo Thun</Link>
@@ -79,7 +79,7 @@ class Menutop extends Component {
 
                         <li className="nav-item dropdown active">
                             <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Các loại quần
+                            Các Loại Quần
                             </Link>
                             <div className="dropdown-menu " aria-labelledby="navbarDropdown">   
                                 <Link className="dropdown-item"  to="/5">Quần Jean</Link>
@@ -90,10 +90,10 @@ class Menutop extends Component {
                             </div>
                             
                         </li>
-                        <li className="nav-item active nav-link" >
-                            <NavLink to="/backend">Quản lý sản Phẩm</NavLink>
+                        {/* <li className="nav-item active nav-link" >
+                            <NavLink to="/backend">Quản Lý Sản Phẩm</NavLink>
                             
-                        </li>
+                        </li> */}
                         {/* {Dropdown list bo suu tap dang cap nhat} */}
                         {/* <li className="nav-item dropdown active">
                             <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

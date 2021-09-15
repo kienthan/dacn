@@ -17,6 +17,7 @@ export default class SignIn extends Component{
     xulyluutru = (e) =>{
         e.preventDefault(); 
         this.context.Dangnhap(this.state.sdt,this.state.mk);
+        e.target.reset();
     }
 
     render() 
@@ -26,7 +27,7 @@ export default class SignIn extends Component{
                 <div  >
             <Menutop />
             <div className="container-fluid">
-           <div className="row" id="__content"> 
+           <div className="row " id="__content"> 
 
             <div className="col-lg-6 col-md-6 text-center" id="content__left">
                 <h1 style={{marginTop:'50px'}}> ĐĂNG NHẬP <br />
@@ -46,17 +47,17 @@ export default class SignIn extends Component{
                 </div>
             </div>
             
-            <div id="login__content" style={{marginTop:'0', backgroundColor:'rgba(244, 91, 105, 1)'}} className="col-lg-6 col-md-6 text-center">
+            <div id="" style={{backgroundColor:'rgba(244, 91, 105, 1)'}} className="col-lg-6 col-md-6 text-center">
 
-            <form onSubmit={this.xulyluutru} style={{marginTop:'-50px'}}>
-                <h3> Đăng Nhập </h3>
-            <div className="mb-3 row" style={{marginLeft:'10%'}}>
+            <form onSubmit={this.xulyluutru}>
+                <h5 className='mt-5'> Đăng Nhập </h5>
+            <div className="mb-3 " >
                     <input type="number" placeholder="Nhập Số Điện Thoại"  className="form-control text-center" 
-                    id="sdt" name='sdt' onChange={this.xulynhap}/>
+                    id="" name='sdt' onChange={this.xulynhap} />
                 </div>
-                <div className="mb-3 row"style={{marginLeft:'10%'}}>
+                <div className="mb-3">
                     <input type="password" className="form-control text-center" name='mk' 
-                    id="mk" placeholder="Mật khẩu" onChange={this.xulynhap}/>
+                    id="" placeholder="Mật khẩu" onChange={this.xulynhap}/>
                 </div>
                 <Link to="/signup">
                     <p className="text-decoration-none text-dark">Tạo tài khoản mới !</p>

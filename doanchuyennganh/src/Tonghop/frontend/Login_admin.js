@@ -17,6 +17,7 @@ export default class SignIn extends Component{
     xulyluutru = (e) =>{
         e.preventDefault(); 
         this.context.Admin(this.state.admin,this.state.pass);
+        e.target.reset();
     }
 
     render() 
@@ -27,7 +28,7 @@ export default class SignIn extends Component{
             <Menutop />
             <div className="container-fluid">
            <div className="row"> 
-            <div style={{backgroundColor:'rgba(244, 91, 105, 1)',padding:'30px 400px'}} className="col-lg-12 col-md-12 col-sm-12">
+            <div style={{backgroundColor:'rgba(244, 91, 105, 1)',padding:'30px 400px'}} className="col-lg-12 col-md-12 col-sm-12 text-center" >
 
             <form onSubmit={this.xulyluutru} style={{padding:'30px 70px',backgroundColor:'#fff',borderRadius:'10px'}}>
                 <h5 className="text-center"> Đăng Nhập cho trang quản trị </h5>
@@ -39,11 +40,7 @@ export default class SignIn extends Component{
                     <input type="password" className="form-control text-center" name='pass' 
                     placeholder="Mật khẩu" onChange={this.xulynhap} />
                 </div>
-                <Link to="/signup"  >
-                    <p className="text-decoration-none text-dark" style={{marginLeft:'35%'}}>Tạo tài khoản mới !</p>
-                </Link>
-
-                <button type="submit" className="btn btn-success" style={{marginLeft:'40%',marginBottom:'20px'}}>Đăng Nhập</button>
+                <button type="submit" className="btn btn-success" style={{marginBottom:'20px'}}>Đăng Nhập</button>
             </form>
             </div>
             
