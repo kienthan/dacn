@@ -1,14 +1,14 @@
-#hr{
-    width: 80px;
-    background-color: #8a2be2;
-    margin-left: 1px;
+#hr {
+  width: 80px;
+  background-color: #8a2be2;
+  margin-left: 1px;
 }
-a{
+/* a{
     text-decoration: none;
     color: black;
-}
+} */
 
-a :hover{
-    color:orange;
-    text-decoration: none;
+a :hover {
+  color: orange;
+  text-decoration: none;
 }

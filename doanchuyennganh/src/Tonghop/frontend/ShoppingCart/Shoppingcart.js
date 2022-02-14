@@ -41,7 +41,8 @@ export class Cart extends Component {
                                         <button className="count btn btn-success ml-2" onClick={() => increase(item.mamh)}> + </button>
                                     </div>
                                     
-                                    <div className="btn btn-primary mt-3" onClick={() => removeProduct(item.mamh)}>Xoá mặt hàng</div>
+                                    <div className="btn btn-primary mt-3" onClick={() => removeProduct(item.mamh)}>
+                                    <i class="bi bi-trash-fill"></i>Xoá mặt hàng</div>
                                 </div>
                                </div>
                                <hr />
@@ -51,7 +52,11 @@ export class Cart extends Component {
                     }
                     <div className="mb-5" style={{float:'right', marginRight:'10%'}}>
                     <h5>Tổng tiền: <span style={{color:'red'}}>{total.toLocaleString()} VNĐ</span></h5>
-                        <Link to="/payment"   ><button className="btn btn-info mb-3">Thanh toán</button></Link>
+                        <Link to="/payment">
+                            <button className="btn btn-info mb-3">
+                            Thanh toán
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 )

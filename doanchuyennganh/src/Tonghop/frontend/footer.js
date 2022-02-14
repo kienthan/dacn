@@ -6,8 +6,6 @@ export default function Footer(){
     return(
         <div>
             <footer className="page-footer font-small unique-color-dark mt-2">
-
-
             <div className="container-fluid text-center text-md-left"
              style={{backgroundColor:'#39364D', color:'white'}}>
 
